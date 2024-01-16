@@ -1,0 +1,58 @@
+﻿@model Website.Dtos.UserForRegistrationDto
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <nav aria-label="Breadcrumb">
+                    <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Đăng Nhập</li>
+                    </ul>
+                </nav>
+                <h1 class="text-center">Đăng Nhập</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 py-3">
+                <form asp-action="Register" role="form" method="post" id="login-form" autocomplete="off">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label">Tên Đăng Nhập</label>
+                        <input asp-for="UserName" type="email" class="form-control" placeholder="Email của bạn">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserPassword">Mật Khẩu</label>
+                        <input asp-for="UserPassword" type="password" name="UserPassword" id="UserPassword" class="form-control" placeholder="Mật khẩu">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserPasswordConfirm">Nhập lại Mật Khẩu</label>
+                        <input asp-for="UserPasswordConfirm" type="password" name="UserPasswordConfirm" id="UserPasswordConfirm" class="form-control" placeholder="Mật khẩu">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserFirstName">Họ</label>
+                        <input asp-for="UserFirstName" type="text" id="key" class="form-control" placeholder="Họ">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserLastName">Tên</label>
+                        <input asp-for="UserLastName" type="text" id="key" class="form-control" placeholder="Tên">
+                    </div>
+                    <div class="form-group">
+                        <p class="text-danger">@TempData["error"] </p>
+                    </div>
+                    <input type="submit" name="submit" id="btn-login" class="btn btn-outline-danger btn-custom btn-lg btn-block" value="Đăng Kí">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+

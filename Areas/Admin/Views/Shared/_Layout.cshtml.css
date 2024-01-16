@@ -1,0 +1,78 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+    color: #9F0311;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.owl-nav {
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev {
+    display: inline-block;
+    padding: 6px 0 !important;
+    background-color: #9F0311;
+    color: #fff;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    padding-right: 14px !important;
+    padding-left: 7px !important;
+    border-radius: 0 40px 40px 0;
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+    padding-right: 7px !important;
+    padding-left: 14px !important;
+    border-radius: 40px 0 0 40px;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+
+
+.sticky {
+    border-bottom: 1px solid #9F0311;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+}

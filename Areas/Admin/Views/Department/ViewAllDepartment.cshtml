@@ -1,0 +1,84 @@
+﻿@model Website.Models.Department
+
+@{
+    ViewData["Title"] = "ViewAllDepartment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Chào Mừng đến Trang Admin
+        <!-- <small>
+        </small> -->
+    </h1>
+
+    <form action="" method="post">
+        <table class="table table-bordered table-hover">
+            <div id="bulkOptionsContainer" style="padding-left: 0; padding-right: 0px;" class="col-xs-4">
+                <select class="form-control" name="bulk_options" id="">
+                    <option value="">Select Option</option>
+                    <option value="published">Publish</option>
+                    <option value="draft">Draft</option>
+
+                    <option value="clone">Clone</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <input type="submit" class="btn btn-success" name="submit" id="" placeholder="" value="Apply">
+                <a class="btn btn-primary" href="~/Admin/Department/CreateDepartment">Thêm Thành Viên</a>
+            </div>
+
+            <thead>
+                <tr>
+                    <th><input id="selectAllBoxes" type="checkbox"></th>
+                    <th>ID</th>
+                    <th>Phòng Ban</th>
+                    <th>Chức Danh</th>
+                    <th>Họ và Tên</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                    <th>Hình Ảnh</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Department)
+                {
+                    <tr>
+
+                        <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $news_id; ?>'> </td>
+                        <td> @item.DepartmentId </td>
+                        <td>
+                            @foreach (var iteam in ViewBag.DepartmentStruc)
+                            {
+                                @if (iteam.StructureId == item.DepartmentStrucId)
+                                {
+                                    @iteam.StructureName
+                                }
+                            }
+                        </td>
+                        <td> @item.DepartmentJobTitle </td>
+                        <td> @item.DepartmentName </td>
+                        <td> @item.DepartmentPhone </td>
+                        <td>@item.DepartmentEmail</td>
+                        <td> <img style="width :100px" src="~/img/@item.DepartmentImage" alt="image"> </td>
+                        
+
+
+                        <td>
+                            <form method="post" onsubmit="return confirm('Are you sure you want to delete?')" action="~/Admin/Department/DeleteDepartment">
+                                <input type="hidden" name="delete" value="@item.DepartmentId" />
+                                <button class="btn btn-primary" type="submit">Delete</button>
+                            </form>
+                        </td>
+                        <td> <a href="~/Admin/Department/EditDepartment?editDepart=@item.DepartmentId"> Edit </a></td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </form>
+</div>

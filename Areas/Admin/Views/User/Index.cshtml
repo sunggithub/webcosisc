@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Website.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Chào Mừng đến với Trang Admin
+        <!-- <small>
+        </small> -->
+    </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên Người Dùng
+                </th>
+                <th>
+                    Họ
+                </th>
+                <th>
+                    Tên
+                </th>
+                <th>
+                    Quyền 
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserRole)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditUser", new { editUser = item.UserId }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { delete = item.UserId })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,103 @@
+﻿@using X.PagedList;
+@model IPagedList<Product>
+@{
+    ViewData["Title"] = "Dịch Vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string areaValue = Model.PageNumber == 1 ? "" : "";
+}
+<div class="container mt-2">
+    <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <nav aria-label="Breadcrumb">
+                    <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="~/Home">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Dịch Vụ</li>
+                    </ul>
+                </nav>
+                <h1 class="text-center">Sản phẩm và Dịch Vụ</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="page-section features ">
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-3">
+                <h2 class="title-section">Chúng tôi cung cấp <span class="marked">Giải Pháp và Dịch vụ Sản Phẩm</span> CNTT</h2>
+                <div class="divider"></div>
+                <p class="mb-5">Xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê; xây dựng công cụ xử lý, tích hợp, quản lý, khai thác dữ liệu; xây dựng và quản lý cơ sở dữ liệu, kho dữ liệu thống kê bao gồm dữ liệu vi mô và dữ liệu vĩ mô thống kê.</p>
+                <a href="#" class="btn btn-primary">Xem Thêm</a>
+            </div>
+            <div class="col-lg-6 py-3">
+                <div class="img-place text-center">
+                    <img src="~/assets/img/bg_image_3.png" alt="">
+                </div>
+            </div>
+        </div>
+        </div> <!-- .container -->
+    </div> <!-- .page-section -->
+  
+    <div class="page-section ">
+        <div class="container">
+        <div class="text-center">
+            <div class="subhead">Luôn Luôn Phát Triển</div>
+            <h2 class="title-section">Sản Phẩm Dịch Vụ <span class="marked">Mới Nhất</span></h2>
+            <div class="divider mx-auto"></div>
+        </div>
+  
+        <div class="row mt-5 text-center">
+            @foreach(var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                    <div style="max-height: 300px" class="card-blog">
+                        <div class="header">
+                            <div class="entry-footer">
+                                <div class="post-author">@item.ProductAuthor</div>
+                                <a href="#" class="post-date">@item.ProductReleaseDate</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="post-title"><a href="blog-single.html">@item.ProductTitle</a></div>
+                            <img src="~/img/@item.ProductImage" style="max-width: 200px; max-height:110px;" />
+                        </div>
+                        <div class="footer">
+                            <a href="#">Xem Thêm <span class="mai-chevron-forward text-sm"></span></a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+
+        <div class="col-12 mt-5">
+            <nav aria-label="Page Navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                            <a class="page-link" href="@(Model.HasPreviousPage ? Url.Action("Index", new { page = Model.PageNumber - 1, area = areaValue }) : "#")" tabindex="-1" aria-disabled="@(Model.HasPreviousPage ? "false" : "true")">Previous</a>
+                    </li>
+
+                    @for (var i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = i, area = areaValue })">
+                                    @i @if (i == Model.PageNumber)
+                                {
+                                    <span class="sr-only">(current)</span>
+                                }</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                            <a class="page-link" href="@(Model.HasNextPage ? Url.Action("Index", new { page = Model.PageNumber + 1, area = areaValue }) : "#")">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        </div> <!-- .container -->
+    </div> <!-- .page-section -->
+</main>

@@ -1,0 +1,83 @@
+﻿@model Website.Models.Department
+
+@{
+    ViewData["Title"] = "EditDepartment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Chào Mừng đến Trang Admin
+        <!-- <small>
+        </small> -->
+    </h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="EditDepartment" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="DepartmentId" class="control-label"></label>
+                    <input asp-for="DepartmentId" class="form-control" value="@Model.DepartmentId" readonly />
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentStrucId" class="control-label"></label>
+                    <select asp-for="DepartmentStrucId" class="form-control">
+                        <option value="">Chọn Phòng Ban</option>
+                        @if (ViewBag.DepartmentStructure != null && ViewBag.DepartmentStructure.Count > 0)
+                        {
+                            @foreach (var item in ViewBag.DepartmentStructure)
+                            {
+                                <option value="@item.StructureId">@item.StructureName</option>
+                            }
+                        }
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentJobTitle" class="control-label"></label>
+                    <input asp-for="DepartmentJobTitle" class="form-control" />
+                    <span asp-validation-for="DepartmentJobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentName" class="control-label"></label>
+                    <input asp-for="DepartmentName" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentPhone" class="control-label"></label>
+                    <input asp-for="DepartmentPhone" class="form-control" />
+                    <span asp-validation-for="DepartmentPhone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DepartmentEmail" class="control-label"></label>
+                    <input asp-for="DepartmentEmail" class="form-control" />
+                    <span asp-validation-for="DepartmentEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="imagePreview" class="control-label">Hình Ảnh Hiện Tại:</label>
+                    <img id="imagePreview" src="~/img/@Model.DepartmentImage" alt="Current Image" style="max-width: 200px; height: auto;" />
+                </div>
+                <div class="form-group">
+                    <label for="Hình ảnh mới" class="control-label">Hình ảnh mới</label>
+                    <input asp-for="DepartmentImage" class="form-control" type="file" name="fileImage" />
+                    <span asp-validation-for="DepartmentImage" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DepartmentDescrip" class="control-label"></label>
+                    <input asp-for="DepartmentDescrip" class="form-control" />
+                    <span asp-validation-for="DepartmentDescrip" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a href="~/Admin/Department/ViewAllDepartment">Back to List</a>
+    </div>
+</div>

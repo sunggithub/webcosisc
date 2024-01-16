@@ -1,0 +1,363 @@
+﻿@model IEnumerable<Website.Models.News>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="page-banner home-banner ">
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <h1 class="mb-4">Trung Tâm Tin học Thống Kê khu vực II</h1>
+                <p class="text-lg mb-5">Thuộc Cục Thu thập dữ liệu và Ứng dụng công nghệ thông tin, tiền thân là Công ty Dịch vụ Thông tin Thống kê được thành lập từ năm 1988</p>
+
+                <a class="btn btn-outline border text-secondary" asp-area="" asp-controller="About" asp-action="Introduction">Xem Thêm</a>
+                <a href="#" class="btn btn-primary btn-split ml-2">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+            </div>
+            <div class="col-lg-6 py-3 wow zoomIn">
+                <div class="img-place">
+                    <img src="~/assets/img/bg_image_1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-section features">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Chuyên phụ trách về dịch vụ công nghệ thông tin, chuyển đổi số</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Cung cấp và hỗ trợ các dịch vụ tính toán hiệu năng cao</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Nghiên cứu, ứng dụng và triển khai trong lĩnh vực công nghệ cao</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-3 wow zoomIn">
+                <div class="img-place text-center">
+                    <img src="~/assets/img/bg_image_2.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 py-3 wow fadeInRight">
+                <h2 class="title-section">Giới thiệu <span class="marked">Cosis2</span> <br /> Thành Viên thuộc Cosis2</h2>
+                <div class="divider"></div>
+                <p>Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng; tham gia xây dựng và thực hiện các giải pháp kỹ thuật về bảo mật, bảo đảm an toàn, an ninh đối với thông tin cho hệ thống công nghệ thông tin của ngành Thống kê.</p>
+                <a href="~/About/Structure" class="btn btn-primary">Xem Thêm</a>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section counter-section">
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-lg-4">
+                <p>Đã Thành Lập</p>
+                <h2><span class="number" data-number="36"></span> năm</h2>
+            </div>
+            <div class="col-lg-4">
+                <p>Đạt Doanh Số</p>
+                <h2><span class="number" data-number="200000000"></span> VND</h2>
+            </div>
+            <div class="col-lg-4">
+                <p>Thành Tựu</p>
+                <h2><span class="number" data-number="73"></span></h2>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div  class="page-section features">
+    <div class="container">
+        <div class="row">
+            <div  class="col-lg-6 wow fadeInLeft">
+                <h2 class="title-section">Chúng tôi <span class="marked">cung cấp </span> Các dịch vụ</h2>
+                <div class="divider"></div>
+                <p style="font-size: 16px"  class="mb-5">Xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê.</p>
+                <a asp-area="" asp-controller="Service" asp-action="Index" class="btn btn-outline-danger">Xem thêm</a>
+            </div>
+            <div class="col-lg-6  wow zoomIn">
+                <div class="img-place text-center">
+                    <img src="~/assets/img/bg_image_3.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section counter-sectionc features">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <div class="subhead">Tìm hiểu về Chúng tôi</div>
+            <h2 class="title-section"><span class="marked">Chức Năng</span> và Nhiệm Vụ</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row mt-5 text-center">
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><span class="mai-shapes"></span></div>
+                <h5>Phát triển và Đảm bảo hạ tầng</h5>
+                <p>Phục vụ công tác quản lý và điều hành, nghiên cứu khoa học, tính toán hiệu năng cao, triển khai ứng dụng và Chuyển đổi số.</p>
+            </div>
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><span class="mai-shapes"></span></div>
+                <h5>Xây dựng, quản lý và duy trì HTTT</h5>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, sit.</p>
+            </div>
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><span class="mai-shapes"></span></div>
+                <h5>Hợp tác quốc tế</h5>
+                <p>Triển khai ứng dụng khoa học và công nghệ theo quy định của pháp luật.</p>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section border-top">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <h2 class="title-section">Sản phẩm Nổi Bật</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-auto py-3 wow fadeInLeft">
+                <div class="card-pricing">
+                    <div class="header">
+                        <div class="price-icon"><span class="mai-people"></span></div>
+                        <div class="price-title">Membership</div>
+                    </div>
+                    <div class="body py-3">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <h2 class="display-4">30</h2>
+                            <span class="period">/monthly</span>
+                        </div>
+                        <div class="price-info">
+                            <p>Choose the plan that right for you</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-auto py-3 wow fadeInUp">
+                <div class="card-pricing active">
+                    <div class="header">
+                        <div class="price-labled">Best</div>
+                        <div class="price-icon"><span class="mai-business"></span></div>
+                        <div class="price-title">Dedicated</div>
+                    </div>
+                    <div class="body py-3">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <h2 class="display-4">60</h2>
+                            <span class="period">/monthly</span>
+                        </div>
+                        <div class="price-info">
+                            <p>Choose the plan that right for you</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-auto py-3 wow fadeInRight">
+                <div class="card-pricing">
+                    <div class="header">
+                        <div class="price-icon"><span class="mai-rocket-outline"></span></div>
+                        <div class="price-title">Private</div>
+                    </div>
+                    <div class="body py-3">
+                        <div class="price-tag">
+                            <span class="currency">$</span>
+                            <h2 class="display-4">90</h2>
+                            <span class="period">/monthly</span>
+                        </div>
+                        <div class="price-info">
+                            <p>Choose the plan that right for you</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section bg-light">
+    <div class="container">
+
+        <div class="owl-carousel wow fadeInUp" id="testimonials">
+            <div class="item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 py-3">
+                        <div class="testi-image">
+                            <img src="~/assets/img/person/person_1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <div class="testi-content">
+                            <p>Trung tâm Tin học Thống kê Khu vực II là một đơn vị thuộc Cục Thu thập dữ liệu và Ứng dụng công nghệ thông tin, tiền thân là Công ty Dịch vụ Thông tin Thống kê được thành lập từ năm 1988. Trung tâm được giao chức năng, nhiệm vụ: Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng; tham gia xây dựng và thực hiện các giải pháp kỹ thuật về bảo mật, bảo đảm an toàn, an ninh đối với thông tin cho hệ thống công nghệ thông tin của ngành Thống kê; thực hiện bảo trì, hỗ trợ và tư vấn kỹ thuật về công nghệ thông tin đối với hệ thống mạng của 20 Cục Thống kê phía Nam.</p>
+                            <div class="entry-footer">
+                                <strong>Lý Hồng Hải</strong> &mdash; <span class="text-grey">Giám Đốc Trung Tâm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 py-3">
+                        <div class="testi-image">
+                            <img src="~/assets/img/person/person_2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3">
+                        <div class="testi-content">
+                            <p>Trung tâm xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê; xây dựng công cụ xử lý, tích hợp, quản lý, khai thác dữ liệu; xây dựng và quản lý cơ sở dữ liệu, kho dữ liệu thống kê bao gồm dữ liệu vi mô và dữ liệu vĩ mô thống kê. </p>
+                            <div class="entry-footer">
+                                <strong>A Thuận</strong> &mdash; <span class="text-grey">Phó Giám Đốc kiêm Phụ trách chính Phòng Phát Triển CNTT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <h2 class="title-section">Liên hệ với Chúng Tôi</h2>
+                <div class="divider"></div>
+                <p>Trung Tâm Tin học Thống Kê<br> Khu vực II!</p>
+
+                <ul class="contact-list">
+                    <li>
+                        <div class="icon"><span class="mai-map"></span></div>
+                        <div class="content">54A Nơ Trang Long - Phường 14 - Quận Bình Thạnh - TP Hồ Chí Minh</div>
+                    </li>
+                    <li>
+                        <div class="icon"><span class="mai-mail"></span></div>
+                        <div class="content"><a href="#">cosis2@gmail.com</a></div>
+                    </li>
+                    <li>
+                        <div class="icon"><span class="mai-phone-portrait"></span></div>
+                        <div class="content"><a href="#">028 3551 5431</a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <div class="subhead">Hợp tác với Chúng tôi</div>
+                <h2 class="title-section">Để lại thông tin Liên Hệ</h2>
+                <div class="divider"></div>
+
+                <form action="#">
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Full name">
+                    </div>
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="py-2">
+                        <textarea rows="6" class="form-control" placeholder="Enter message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill mt-4">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section border-top">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <div class="subhead">Bài đăng về Chúng tôi</div>
+            <h2 class="title-section">Đọc <span class="marked">Các Tin Tức </span>Mới Nhất về Chúng tôi</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+        <div class="row my-5 card-blog-row">      
+            @foreach(var item in Model)
+            {
+                if(item != null)
+                {
+                    <div class="col-md-6 col-lg-3 py-3 wow fadeInUp">
+                        <div style="height: 350px;" class="card-blog">
+                            <div class="header">
+                                <div class="entry-footer">
+                                    <div class="post-author">@item.NewsAuthor</div>
+                                    <a href="#" class="post-date">@item.NewsDate</a>
+                                </div>
+                            </div>
+                            <div class="body">
+                                <div class="post-title"><a href="blog-single.html">@item.NewsTitle</a></div>
+                            </div>
+                            <div class="footer">
+                                <a href="~/Blog/BlogDetail?blog=@item.NewsId">Xem Thêm <span class="mai-chevron-forward text-sm"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                } 
+            }
+        </div>
+
+        <div class="text-center">
+            <a href="~/Blog" class="btn btn-outline-primary rounded-pill">Xem Thêm Các Tin Tức Khác</a>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+

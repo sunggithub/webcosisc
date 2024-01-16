@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Liên Hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-2">
+    <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <nav aria-label="Breadcrumb">
+                    <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="~/Home">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Liên Hệ</li>
+                    </ul>
+                </nav>
+                <h1 class="text-center">Liên Hệ</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <box-icon size="lg" color="#9F0311" name='chat'></box-icon>
+                <h5>Chat với Chúng Tôi </h5>
+                <p>
+                    Chúng tôi hỗ trợ từ thứ Hai đến thứ Sáu từ 8 giờ sáng đến 5 giờ chiều.
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <box-icon size="lg" color="#9F0311" name='envelope'></box-icon>
+                <h5>Gửi Mail cho Chúng Tôi</h5>
+                <p>Bạn sẽ nhận được thư trả lời trong vòng 24 giờ.</p>
+            </div>
+
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <box-icon size="lg" color="#9F0311" name='phone-call'></box-icon>
+                <h5>Hãy Gọi cho Chúng Tôi</h5>
+                <p>Chúng tôi hỗ trợ từ thứ Hai đến thứ Sáu từ 8 giờ sáng đến 5 giờ chiều.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <a class="btn btn-outline-primary" href="#">Trò chuyện với Chúng Tôi</a>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <a class="btn btn-primary" href="mailto:cosis2@gmail.com">Gửi Mail cho Chúng Tôi</a>
+            </div>
+            <div class="col-md-6 col-lg-4 text-center wow fadeInUp">
+                <a class="btn btn-outline-primary" href="tel:028 3551 5431">Gọi 028 3551 5431</a>
+            </div>
+        </div>
+    </div> <!-- .container -->
+
+
+
+<div class="page-section">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 py-3 wow fadeInUp">
+                <div class="subhead">Hợp tác với Chúng tôi</div>
+                <h2 class="title-section">Để lại thông tin Liên Hệ</h2>
+                <p>Điền vào biểu mẫu và một trong những đại diện của chúng tôi sẽ liên lạc với bạn sớm nhất.</p>
+                <div class="divider"></div>
+
+                <form action="#">
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Họ Tên">
+                    </div>
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="py-2">
+                        <textarea rows="6" class="form-control" placeholder="Nhập Tin Nhắn"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill mt-4">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+

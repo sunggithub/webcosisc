@@ -1,0 +1,78 @@
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-ygtl6z3l6x] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-ygtl6z3l6x] {
+    color: #9F0311;
+}
+
+.btn-primary[b-ygtl6z3l6x] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.owl-nav[b-ygtl6z3l6x] {
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.owl-carousel .owl-nav button.owl-next[b-ygtl6z3l6x],
+.owl-carousel .owl-nav button.owl-prev[b-ygtl6z3l6x] {
+    display: inline-block;
+    padding: 6px 0 !important;
+    background-color: #9F0311;
+    color: #fff;
+}
+
+.owl-carousel .owl-nav button.owl-next[b-ygtl6z3l6x] {
+    padding-right: 14px !important;
+    padding-left: 7px !important;
+    border-radius: 0 40px 40px 0;
+}
+
+.owl-carousel .owl-nav button.owl-prev[b-ygtl6z3l6x] {
+    padding-right: 7px !important;
+    padding-left: 14px !important;
+    border-radius: 40px 0 0 40px;
+}
+
+.border-top[b-ygtl6z3l6x] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-ygtl6z3l6x] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-ygtl6z3l6x] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-ygtl6z3l6x] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-ygtl6z3l6x] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+
+
+.sticky[b-ygtl6z3l6x] {
+    border-bottom: 1px solid #9F0311;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+}

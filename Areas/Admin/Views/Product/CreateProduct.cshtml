@@ -1,0 +1,89 @@
+﻿@model Website.Models.Product
+
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Welcome to Admin Dashboard
+        <!-- <small>
+        </small> -->
+    </h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="CreateProduct" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ProductTitle" class="control-label">Tên Sản Phẩm/ Dịch Vụ</label>
+                    <input asp-for="ProductTitle" class="form-control" />
+                    <span asp-validation-for="ProductTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductAuthor" class="control-label">Tên Tác Giả</label>
+                    <input asp-for="ProductAuthor" class="form-control" />
+                    <span asp-validation-for="ProductAuthor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductImage" class="control-label">Hình Ảnh Đại Diện</label>
+                    <input asp-for="ProductImage" class="form-control" type="file" name="fileImage" />
+                    <span asp-validation-for="ProductImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductStatus" class="control-label">Tình Trạng</label>
+                    <select asp-for="ProductStatus" class="form-control">
+                        <option value="">Chọn Tình Trạng</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">InActive</option>
+                        <!-- Thêm các option khác nếu cần -->
+                    </select>
+                    <span asp-validation-for="ProductStatus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductReleaseDate" class="control-label">Ngày Xuất Bản</label>
+                    <input asp-for="ProductReleaseDate" class="form-control" />
+                    <span asp-validation-for="ProductReleaseDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductDescription" class="control-label">Mô tả Sản Phẩm/ Dịch Vụ</label>
+                    <textarea id="inputContent" asp-for="ProductDescription" class="form-control"></textarea>
+                    <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+
+
+@section Scripts
+{
+    <script>
+
+        var inputElement = document.getElementById('inputContent');
+
+        if (inputElement) {
+            CKEDITOR.replace('inputContent');
+        } else {
+            console.error("Không tìm thấy phần tử 'inputContent' trong DOM.");
+        }
+
+        function openCKFinder() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                // Hành động khi file được chọn
+                console.log(fileUrl); // In ra đường dẫn file đã chọn để kiểm tra
+            };
+            finder.popup();
+        }
+    </script>
+}

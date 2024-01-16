@@ -1,0 +1,92 @@
+﻿@model Website.Models.News
+
+@{
+    ViewData["Title"] = "CreateNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Chào Mừng đến với Trang Admin
+        <!-- <small>
+        </small> -->
+    </h1>
+    <form asp-action="CreateNews" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="NewsCategoryId" class="control-label">Loại Blog</label>
+            <select asp-for="NewsCategoryId" class="form-control">
+            <option value="">Chọn Loại Blog</option>
+            @foreach(var item in ViewBag.NewsCategory)
+            {
+                <option value="@item.NewsCategoryId">@item.NewsCategoryTitle</option>
+            }
+                </select>
+            <span asp-validation-for="NewsCategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewsTitle" class="control-label">Tiêu đề Bài Đăng</label>
+            <input asp-for="NewsTitle" class="form-control" />
+            <span asp-validation-for="NewsTitle" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewsAuthor" class="control-label">Tác Giả</label>
+            <input asp-for="NewsAuthor" class="form-control" />
+            <span asp-validation-for="NewsAuthor" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewsImage" class="control-label">Hình Ảnh</label>
+            <input asp-for="NewsImage" class="form-control" type="file" />
+            <a onclick="openCKFinder()">Open CKFinder</a>
+            <span asp-validation-for="NewsImage" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewsStatus" class="control-label">Trạng Thái Bài Đăng</label>
+            <select asp-for="NewsStatus" class="form-control">
+                <option value="">Chọn Trạng Thái Bài Đăng</option>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+                <!-- Thêm các option khác nếu cần -->
+            </select>
+            <span asp-validation-for="NewsStatus" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewsContent" class="control-label">Nội Dung</label>
+            <textarea id="inputContent" asp-for="NewsContent" class="form-control"></textarea>
+            <span asp-validation-for="NewsContent" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Tạo bài đăng" class="btn btn-default" />
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Quay về trang List</a>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+
+        var inputElement = document.getElementById('inputContent');
+
+        if (inputElement) {
+            CKEDITOR.replace('inputContent');
+        } else {
+            console.error("Không tìm thấy phần tử 'inputContent' trong DOM.");
+        }
+
+        function openCKFinder() {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                // Hành động khi file được chọn
+                console.log(fileUrl); // In ra đường dẫn file đã chọn để kiểm tra
+            };
+            finder.popup();
+        }
+    </script>
+}
+
+
+
+

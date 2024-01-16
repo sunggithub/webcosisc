@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Website.Models.News>
+@{
+    ViewData["Title"] = "Trang Chủ";
+}
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Welcome to Admin Dashboard
+        <!-- <small>
+        </small> -->
+    </h1>
+
+    <form action="" method="post">
+        <table class="table table-bordered table-hover">
+            <div id="bulkOptionsContainer" style="padding-left: 0; padding-right: 0px;" class="col-xs-4">
+                <select class="form-control" name="bulk_options" id="">
+                    <option value="">Select Option</option>
+                    <option value="published">Publish</option>
+                    <option value="draft">Draft</option>
+                   
+                    <option value="clone">Clone</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <input type="submit" class="btn btn-success" name="submit" id="" placeholder="" value="Apply">
+                <a class="btn btn-primary" href="~/Admin/HomeAdmin/CreateNews">Thêm Blog</a>
+            </div>
+
+            <thead>
+                <tr>
+                    <th><input id="selectAllBoxes" type="checkbox"></th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Status</th>
+                    <th>Image</th>
+                    <th>Date</th>
+                    <th>News Views</th>
+                    <th>Delete</th>
+                    <th>View News</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in ViewBag.News)
+                 {
+                <tr>
+                    
+                        <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $news_id; ?>'> </td>
+                        <td> @item.NewsId </td>
+                        <td>
+                            @foreach(var iteam in ViewBag.NewsCategory)
+                            {
+                                @if(iteam.NewsCategoryId == item.NewsCategoryId)
+                                {
+                                    @iteam.NewsCategoryTitle
+                                }
+                            }
+                        </td>
+                        <td> @item.NewsAuthor </td>
+                        <td> @item.NewsStatus </td>
+                        
+                        <td> <img style="width :100px" src="~/img/@item.NewsImage" alt="image"> </td>
+                        <td> @item.NewsDate </td>
+
+                        <td>@item.NewsView</td>
+
+
+                        <td>
+                            <form method="post" onsubmit="return confirm('Are you sure you want to delete?')" action="~/Admin/HomeAdmin/DeleteNews">
+                                <input type="hidden" name="delete" value="@item.NewsId" />
+                                <button class="btn btn-primary" type="submit">Delete</button>
+                            </form>
+                        </td>
+                        <td> <a href="~/Blog/BlogDetail?blog=@item.NewsId"> View News </a></td>
+                        <td> <a href="~/Admin/HomeAdmin/EditNews?editNews=@item.NewsId"> Edit </a></td>
+                    
+                    
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </form>
+</div>
+
+

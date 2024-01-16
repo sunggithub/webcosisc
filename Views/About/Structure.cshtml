@@ -1,0 +1,325 @@
+﻿@model IEnumerable<Website.Models.Department>
+@{
+    ViewData["Title"] = "Cơ Cấu Tổ Chức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-2">
+    <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <nav aria-label="Breadcrumb">
+                    <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active">Cơ Cấu Tổ Chức</li>
+                    </ul>
+                </nav>
+                <h1 class="text-center">Thành Viên thuộc CoSis2</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-section border-top">
+    <div class="container">
+        <div class="tabs-group">
+            <div class="line"></div>
+            <div class="col-2 tab-item active">
+                Lãnh Đạo
+            </div>
+            <div class="col-2 tab-item">
+                Phòng Quản lý tổng hợp
+            </div>
+            <div class="col-2 tab-item">
+                Phòng Nội dung thông tin số
+            </div>
+            <div class="col-3 tab-item">
+                Phòng Đảm bảo Công nghệ thông tin
+            </div>
+            <div class="col-3 tab-item">
+                Phòng Công nghệ tính toán và Ứng dụng
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="text-center wow fadeInUp">
+                    <div class="subhead">Cơ cấu Tổ Chức</div>
+                    <h2 class="title-section">Ban <span class="marked">Lãnh Đạo </span> của CoSis2</h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+                <div class="row my-4 card-blog-row">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.DepartmentStrucId == 1)
+                        {
+                            <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+                                <div class="card-blog">
+                                    <div class="header">
+                                        <div class="avatar">
+                                            <img src="~/img/@item.DepartmentImage" alt="">
+                                        </div>
+                                        <div class="entry-footer">
+                                            <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
+                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                        </div>
+                                    </div>
+                                    <div style="height: 2px;" class="divider"></div>
+                                    <div class="body mb-1">
+                                        <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            Email: @item.DepartmentEmail<br />
+                                            Liên hệ: @item.DepartmentPhone
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="text-center wow fadeInUp">
+                    <div class="subhead">Cơ cấu Tổ Chức</div>
+                    <h2 class="title-section">Phòng <span class="marked">Quản Lí Tổng Hợp </span> của CoSis2</h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+                <div class="row my-4 card-blog-row">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.DepartmentStrucId == 2)
+                        {
+                            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                                <div class="card-blog">
+                                    <div class="header">
+                                        <div class="avatar">
+                                            <img src="~/img/@item.DepartmentImage" alt="">
+                                        </div>
+                                        <div class="entry-footer">
+                                            <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
+                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                        </div>
+                                    </div>
+                                    <div style="height: 2px;" class="divider"></div>
+                                    <div class="body mb-1">
+                                        <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            Email: @item.DepartmentEmail<br />
+                                            Liên hệ: @item.DepartmentPhone
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="text-center wow fadeInUp">
+                    <div class="subhead">Cơ cấu Tổ Chức</div>
+                    <h2 class="title-section">Phòng <span class="marked">Nội Dung Thông Tin Số</span> của CoSis2</h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+
+                <div class="row my-4 card-blog-row">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.DepartmentStrucId == 3)
+                        {
+                            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                                <div class="card-blog">
+                                    <div class="header">
+                                        <div class="avatar">
+                                            <img src="~/img/@item.DepartmentImage" alt="">
+                                        </div>
+                                        <div class="entry-footer">
+                                            <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
+                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                        </div>
+                                    </div>
+                                    <div style="height: 2px;" class="divider"></div>
+                                    <div class="body mb-2">
+                                        <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            Email: @item.DepartmentEmail<br />
+                                            Liên hệ: @item.DepartmentPhone
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane">
+                <h4>Thông Tin Chung</h4>
+            </div>
+            <div class="tab-pane">
+                <h4>Thông Tin Chung</h4>
+            </div>
+        </div>
+        
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+<!-- .page-section -->
+<div class="page-section border-top">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <div class="subhead">Cơ cấu Tổ Chức</div>
+            <h2 class="title-section">Ban <span class="marked">Lãnh Đạo </span> của CoSis2</h2>
+            <div class="divider mx-auto"></div>
+        </div>
+        <div class="row my-4 card-blog-row">
+            @foreach (var item in Model)
+            {
+                    @if(item.DepartmentStrucId == 1)
+                    {
+                    <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+                        <div class="card-blog">
+                            <div class="header">
+                                <div class="avatar">
+                                    <img src="~/img/@item.DepartmentImage" alt="">
+                                </div>
+                                <div class="entry-footer">
+                                    <div class="post-author text-grey">@item.DepartmentJobTitle</div>
+                                    <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                </div>
+                            </div>
+                            <div style="height: 2px;" class="divider"></div>
+                            <div class="body mb-1">
+                                <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                            </div>
+                            <div class="footer">
+                                <div>
+                                    Email: @item.DepartmentEmail<br />
+                                    Liên hệ: @item.DepartmentPhone
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+            }
+        </div>
+
+   
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="container">
+    <div class="text-center wow fadeInUp">
+        <div class="subhead">Cơ cấu Tổ Chức</div>
+        <h2 class="title-section">Phòng <span class="marked">Quản Lí Tổng Hợp </span> của CoSis2</h2>
+        <div class="divider mx-auto"></div>
+    </div>
+    <div class="row my-4 card-blog-row">
+        @foreach (var item in Model)
+        {
+            @if (item.DepartmentStrucId == 2)
+            {
+                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                    <div class="card-blog">
+                        <div class="header">
+                            <div class="avatar">
+                                <img src="~/img/@item.DepartmentImage" alt="">
+                            </div>
+                            <div class="entry-footer">
+                                <div class="post-author text-grey">@item.DepartmentJobTitle</div>
+                                <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                            </div>
+                        </div>
+                        <div style="height: 2px;" class="divider"></div>
+                        <div class="body mb-1">
+                            <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                Email: @item.DepartmentEmail<br />
+                                Liên hệ: @item.DepartmentPhone
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div> <!-- .container -->
+
+<div class="container">
+    <div class="text-center wow fadeInUp">
+        <div class="subhead">Cơ cấu Tổ Chức</div>
+        <h2 class="title-section">Phòng <span class="marked">Nội Dung Thông Tin Số</span> của CoSis2</h2>
+        <div class="divider mx-auto"></div>
+    </div>
+    
+    <div class="row my-4 card-blog-row">
+        @foreach (var item in Model)
+        {
+            @if (item.DepartmentStrucId == 3)
+            {
+                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                    <div class="card-blog">
+                        <div class="header">
+                            <div class="avatar">
+                                <img src="~/img/@item.DepartmentImage" alt="">
+                            </div>
+                            <div class="entry-footer">
+                                <div class="post-author text-grey">@item.DepartmentJobTitle</div>
+                                <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                            </div>
+                        </div>
+                        <div style="height: 2px;" class="divider"></div>
+                        <div class="body mb-2">
+                            <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                        </div>
+                        <div class="footer">
+                            <div>
+                                Email: @item.DepartmentEmail<br />
+                                Liên hệ: @item.DepartmentPhone
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div> <!-- .container -->
+
+<script>
+
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+
+    const tabs = $$(".tab-item");
+    const panes = $$(".tab-pane");
+
+    const tabActive = $(".tab-item.active");
+    const line = $(".tabs-group .line");
+
+    // SonDN fixed - Active size wrong size on first load.
+    // Original post: https://www.facebook.com/groups/649972919142215/?multi_permalinks=1175881616551340
+    requestIdleCallback(function () {
+        line.style.left = tabActive.offsetLeft + "px";
+        line.style.width = tabActive.offsetWidth + "px";
+    });
+
+    tabs.forEach((tab, index) => {
+        const pane = panes[index];
+
+        tab.onclick = function () {
+            $(".tab-item.active").classList.remove("active");
+            $(".tab-pane.active").classList.remove("active");
+
+            line.style.left = this.offsetLeft + "px";
+            line.style.width = this.offsetWidth + "px";
+
+            this.classList.add("active");
+            pane.classList.add("active");
+        };
+    });
+</script>

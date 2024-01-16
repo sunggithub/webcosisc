@@ -1,0 +1,59 @@
+﻿@model Website.Models.NewsCategory
+
+@{
+    ViewData["Title"] = "CreateNewsCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Welcome to Admin Dashboard
+        <!-- <small>
+        </small> -->
+    </h1>
+    <div style="margin-right: 0px; margin-left: 0px" class="row">
+        <div class="col-xs-6">
+            <form asp-action="CreateNewsCategory">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="NewsCategoryTitle" class="control-label"></label>
+                    <input asp-for="NewsCategoryTitle" class="form-control" />
+                    <span asp-validation-for="NewsCategoryTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        
+        </div>
+        <div class="col-xs-6">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Danh Mục Bài Việt</th>
+                        <th>Xoá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.CategoryNews)
+                    {
+                        <tr>
+                            <td>@item.NewsCategoryId</td>
+                            <td>@item.NewsCategoryTitle</td>
+                            <td>
+                                <form method="post" onsubmit="return confirm('Are you sure you want to delete?')" action="~/Admin/HomeAdmin/DeleteNewsCategory">
+                                    <input type="hidden" name="delete" value="@item.NewsCategoryId" />
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

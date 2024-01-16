@@ -1,0 +1,314 @@
+﻿
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-banner home-banner ">
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <h1 class="mb-4">Trung Tâm Tin học Thống Kê khu vực II</h1>
+                <p class="text-lg mb-5">Thuộc Cục Thu thập dữ liệu và Ứng dụng công nghệ thông tin, tiền thân là Công ty Dịch vụ Thông tin Thống kê được thành lập từ năm 1988</p>
+
+                <a class="btn btn-outline border text-secondary" asp-area="" asp-controller="About" asp-action="Introduction">Xem Thêm</a>
+                <a href="#" class="btn btn-primary btn-split ml-2">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+            </div>
+            <div class="col-lg-6 py-3 wow zoomIn">
+                <div class="img-place">
+                    <img src="~/assets/img/bg_image_1.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-section features">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Chuyên phụ trách về dịch vụ công nghệ thông tin, chuyển đổi số</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Cung cấp và hỗ trợ các dịch vụ tính toán hiệu năng cao</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="d-flex flex-row">
+                    <div class="img-fluid mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#9F0311" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h5>Nghiên cứu, ứng dụng và triển khai trong lĩnh vực công nghệ cao</h5>
+                        <p>Copywrite, blogpublic realations content translation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section features">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-8 py-3 wow fadeInUp">
+                <div class="row d-flex flex-row">
+                    @foreach (var item in ViewBag.SingleNews)
+                    {
+                        @if(item != null)
+                        {
+                            <div class="col-lg-12 col-md-12 img-fluid mr-2 ">
+                                <img class="img-fluid" src="~/img/@item.NewsImage" />
+                            </div>
+                            <div class="col-lg-12 col-md-12 mr-2 mt-3">
+                                <a href="~/Blog/BlogDetail?blog=@item.NewsId"><h5>@item.NewsTitle</h5></a>
+                                @{
+                                    string truncatedContent = item.NewsContent.Length > 200 ? item.NewsContent.Substring(0, 200) + "..." : item.NewsContent;
+                                }
+                                <p>@Html.Raw(truncatedContent)</p>
+                            </div>
+                        }
+                        
+                    }
+                </div>
+                <div class="row d-flex flex-row">
+                    @foreach(var item in ViewBag.NewNews)
+                    {
+                        <div class="col-lg-3 col-md-6 img-fluid pb-3">
+                            <img style="max-height: 100px; min-height: 100px" class="img-fluid rounded mx-auto d-block" src="~/img/@item.NewsImage" />
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <h5 class="fs-6">@((item.NewsTitle.Length > 90) ? item.NewsTitle.Substring(0, 90) : item.NewsTitle)</h5>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="row d-flex flex-row justify-content-center">
+                    <div style="width: 100%; height: 80px;" class="col-lg-12 mb-3">
+                        <img class="img-fluid" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <h5 class="fw-bold"><a href="#">Danh sách Điều tra Thống Kê</a></h5>
+                    </div>
+                    <div style="background-color: #9F0311; height: 100px; width: 94%;" class="col-lg-12 text-center mt-5">
+                        <h5 class="fw-bold mt-4"><a class="justify-content-center" style=" color: white" href="~/Contact">Liên hệ với Chúng tôi</a></h5>
+                    </div>
+                    <div class="col-lg-12 py-3 wow fadeInRight border border-danger mt-3" style="width: 94%; height: 250px;">
+                        <h2 class="text-center title-section"><span class="marked">Sự Kiện</span> <br /></h2>
+                        <div class="divider mx-auto"></div>
+                        <div style="">
+                            <a href="#"><p>Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng;</p></a>
+                            <a href="#"><p>Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng;</p></a>
+                        </div>
+                    </div>
+                    <div class="widget-box">
+                        <h4 class="widget-title">Danh Mục</h4>
+                        <div class="divider"></div>
+                        <ul class="categories">
+                            @foreach (var item in ViewBag.CategoryNews)
+                            {
+                                <li><a href="#">@item.NewsCategoryTitle</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section features" style="background-color: #9F0311;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="text-center wow fadeInUp">
+                <h1 style="color: white;" class="title-section">ĐIỀU TRA THỐNG KÊ</h1>
+                <div class="divider mx-auto"></div>
+            </div>
+            <fieldset style="border: 1px solid white; width: 100%; border-radius: 5px;">
+                <legend style="margin-top: -20px; z-index: 200;" class="text-center wow fadeInUp">
+                    <span style="color: white; background-color: #9F0311" class="title-section" id="">TỔNG ĐIỀU TRA</span>
+                </legend>
+                <div class="row py-5 m-5 ">
+                    <div class="col-lg-4 col-xs-12">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra Kinh Tế</span>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="col-lg-4 col-xs-12 ">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra Kinh Tế</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-12 ">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra Kinh Tế</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div>
+                <div class="text-center wow fadeInUp mt-4">
+                    <h4 style="color: white; background-color: #9F0311" class="title-section" id="">LĨNH VỰC ĐIỀU TRA</h4>
+                </div>
+                <div class="row m-5 justify-content-center">
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: 60%" class="img-thumbnail rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                        <div style="text-align:center">
+                            <span class="title-section">Tổng điều tra Kinh Tế</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section counter-sectionc features">
+    <div class="container">
+        <div class="text-center wow fadeInUp">
+            <div class="subhead">Chúng tôi Cung cấp</div>
+            <h1 class="title-section"><span class="marked">DỊCH VỤ THỐNG KÊ</span></h1>
+            <div class="divider mx-auto"></div>
+        </div>
+
+        <div class="row mt-5 text-center">
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><img class="img-fluid rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" /></div>
+                <h5 class="mt-3 marked">Phát triển và Đảm bảo hạ tầng</h5>
+            </div>
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><img class="img-fluid rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" /></div>
+                <h5 class="mt-3 marked">Phát triển và Đảm bảo hạ tầng</h5>
+            </div>
+            <div class="col-lg-4 py-3 wow fadeInUp">
+                <div class="display-3"><img class="img-fluid rounded mx-auto d-block" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" /></div>
+                <h5 class=" marked mt-3">Phát triển và Đảm bảo hạ tầng</h5>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+<div class="page-section features">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <h2 class="title-section">Liên hệ với Chúng Tôi</h2>
+                <div class="divider"></div>
+                <p style="font-size: 16px">Trung Tâm Tin học Thống Kê<br> Khu vực II!</p>
+
+                <ul class="contact-list">
+                    <li>
+                        <div class="icon"><span class="mai-map"></span></div>
+                        <div class="content">54A Nơ Trang Long-Phường 14-Quận Bình Thạnh-TP Hồ Chí Minh</div>
+                    </li>
+                    <li>
+                        <div class="icon"><span class="mai-mail"></span></div>
+                        <div class="content"><a href="#">cosis2@gmail.com</a></div>
+                    </li>
+                    <li>
+                        <div class="icon"><span class="mai-phone-portrait"></span></div>
+                        <div class="content"><a href="#">028 3551 5431</a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6 py-3 wow fadeInUp">
+                <div class="subhead">Hợp tác với Chúng tôi</div>
+                <h2 class="title-section">Để lại thông tin Liên Hệ</h2>
+                <div class="divider"></div>
+
+                <form action="#">
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Họ và Tên">
+                    </div>
+                    <div class="py-2">
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="py-2">
+                        <textarea rows="6" class="form-control" placeholder="Để lại Tin nhắn"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill mt-4">Gửi</button>
+                </form>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .page-section -->

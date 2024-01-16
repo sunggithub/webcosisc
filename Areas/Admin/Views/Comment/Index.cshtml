@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Website.Models.Comment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Chào Mừng đến với Trang Admin
+        <!-- <small>
+        </small> -->
+    </h1>
+
+    <p>
+    </p>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Id Bài Đăng
+            </th>
+            <th>
+                Tác giả Bình luận
+            </th>
+            <th>
+                Email 
+            </th>
+            <th>
+                Ngày Đăng
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                Nội Dung
+            </th>
+            <th>Approve</th>
+            <th>Unapprove</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentNewsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentEmail)
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentContent)
+            </td>
+            <td> 
+                <a href="~/Admin/Comment?approve=@item.CommentId"> Approve </a>
+            </td>
+            <td>
+                <a href="~/Admin/Comment?unapprove=@item.CommentId"> Unapprove </a>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "BlogDetail", "Blog", new { blog = item.CommentNewsId , area = "" })
+ |
+                @Html.ActionLink("Delete", "DeleteComment", new { delete = item.CommentId })
+            </td>
+        </tr>
+    }
+    </tbody>
+    </table>
+</div>

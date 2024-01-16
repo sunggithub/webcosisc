@@ -1,0 +1,106 @@
+﻿@model Website.Models.News
+
+@{
+    ViewData["Title"] = "EditNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Welcome to Admin Dashboard
+        <!-- <small>
+        </small> -->
+    </h1>
+        <form asp-action="EditNews" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewsId" class="control-label"></label>
+                <input asp-for="NewsId" class="form-control" value="@Model.NewsId" readonly />
+                <span asp-validation-for="NewsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsCategoryId" class="control-label"></label>
+                <select asp-for="NewsCategoryId" class="form-control">
+                    <option value="">Chọn Loại Blog</option>
+                    @if(ViewBag.NewsCategory != null && ViewBag.NewsCategory.Count > 0)
+                    {
+                        @foreach (var item in ViewBag.NewsCategory)
+                        {
+                            <option value="@item.NewsCategoryId">@item.NewsCategoryTitle</option>
+                        }
+                    }
+                    
+                </select>
+                <span asp-validation-for="NewsCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsTitle" class="control-label"></label>
+                <input asp-for="NewsTitle" class="form-control" value="@Model.NewsTitle"/>
+                <span asp-validation-for="NewsTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsAuthor" class="control-label"></label>
+                <input asp-for="NewsAuthor" class="form-control" value="@Model.NewsAuthor"/>
+                <span asp-validation-for="NewsAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsDate" class="control-label"></label>
+                <input asp-for="NewsDate" class="form-control" value="@Model.NewsDate"/>
+                <span asp-validation-for="NewsDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="imagePreview" class="control-label">Hình Ảnh Hiện Tại:</label>
+                <img id="imagePreview" src="~/img/@Model.NewsImage" alt="Current Image" style="max-width: 200px; height: auto;" />
+            </div>
+            <div class="form-group">
+                <label for="Hình ảnh mới" class="control-label">Hình ảnh mới</label>
+                <input asp-for="NewsImage" class="form-control" type="file" name="fileImage"/>  
+                <span asp-validation-for="NewsImage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NewsStatus" class="control-label"></label>
+                <select asp-for="NewsStatus" class="form-control">
+                    <option value="">Select Status</option>
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <!-- Thêm các option khác nếu cần -->
+                </select>
+                <span asp-validation-for="NewsStatus" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NewsView" class="control-label"></label>
+                <input asp-for="NewsView" class="form-control" value="@Model.NewsView"/>
+                <span asp-validation-for="NewsView" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsContent" class="control-label"></label>
+                <textarea id="inputContent" asp-for="NewsContent" class="form-control">@Model.NewsContent</textarea>
+                <span asp-validation-for="NewsContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        
+        var inputElement = document.getElementById('inputContent');
+
+        if (inputElement) {
+            CKEDITOR.replace('inputContent');
+        } else {
+            console.error("Không tìm thấy phần tử 'inputContent' trong DOM.");
+        }
+    </script>
+}
+
+
+

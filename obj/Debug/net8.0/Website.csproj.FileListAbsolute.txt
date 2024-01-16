@@ -266,3 +266,4 @@ C:\Users\User\source\repos\Website\obj\Debug\net8.0\refint\Website.dll
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.pdb
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.genruntimeconfig.cache
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\ref\Website.dll
+C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.sourcelink.json

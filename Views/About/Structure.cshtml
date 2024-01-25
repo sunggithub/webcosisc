@@ -10,7 +10,8 @@
             <div class="col-md-6">
                 <nav aria-label="Breadcrumb">
                     <ul class="breadcrumb justify-content-center py-0 bg-transparent">
-                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="~/Home">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="~/About">Về Chúng Tôi</a></li>
                         <li class="breadcrumb-item active">Cơ Cấu Tổ Chức</li>
                     </ul>
                 </nav>
@@ -25,13 +26,13 @@
     <div class="container">
         <div class="tabs-group">
             <div class="line"></div>
-            <div class="col-2 tab-item active">
+            <div class="col-1 tab-item active">
                 Lãnh Đạo
             </div>
             <div class="col-2 tab-item">
                 Phòng Quản lý tổng hợp
             </div>
-            <div class="col-2 tab-item">
+            <div class="col-3 tab-item">
                 Phòng Nội dung thông tin số
             </div>
             <div class="col-3 tab-item">
@@ -61,7 +62,7 @@
                                         </div>
                                         <div class="entry-footer">
                                             <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
-                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                            <h5 class="text-danger"><strong>@item.DepartmentName</strong></h5>
                                         </div>
                                     </div>
                                     <div style="height: 2px;" class="divider"></div>
@@ -99,7 +100,7 @@
                                         </div>
                                         <div class="entry-footer">
                                             <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
-                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                            <h5 class="text-danger"><strong>@item.DepartmentName</strong></h5>
                                         </div>
                                     </div>
                                     <div style="height: 2px;" class="divider"></div>
@@ -138,6 +139,45 @@
                                         </div>
                                         <div class="entry-footer">
                                             <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
+                                            <h5 class="text-danger"><strong>@item.DepartmentName</strong></h5>
+                                        </div>
+                                    </div>
+                                    <div style="height: 2px;" class="divider"></div>
+                                    <div class="body mb-2">
+                                        <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            Email: @item.DepartmentEmail<br />
+                                            Liên hệ: @item.DepartmentPhone
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="text-center wow fadeInUp">
+                    <div class="subhead">Cơ cấu Tổ Chức</div>
+                    <h2 class="title-section">Phòng <span class="marked">Phòng Đảm bảo Công nghệ thông tin</span> của CoSis2</h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+
+                <div class="row my-4 card-blog-row">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.DepartmentStrucId == 4)
+                        {
+                            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                                <div class="card-blog">
+                                    <div class="header">
+                                        <div class="avatar">
+                                            <img src="~/img/@item.DepartmentImage" alt="">
+                                        </div>
+                                        <div class="entry-footer">
+                                            <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
                                             <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
                                         </div>
                                     </div>
@@ -158,137 +198,50 @@
                 </div>
             </div>
             <div class="tab-pane">
-                <h4>Thông Tin Chung</h4>
-            </div>
-            <div class="tab-pane">
-                <h4>Thông Tin Chung</h4>
+                <div class="text-center wow fadeInUp">
+                    <div class="subhead">Cơ cấu Tổ Chức</div>
+                    <h2 class="title-section">Phòng <span class="marked">Phòng Công nghệ tính toán và Ứng dụng</span> của CoSis2</h2>
+                    <div class="divider mx-auto"></div>
+                </div>
+
+                <div class="row my-4 card-blog-row">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.DepartmentStrucId == 34)
+                        {
+                            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                                <div class="card-blog">
+                                    <div class="header">
+                                        <div class="avatar">
+                                            <img src="~/img/@item.DepartmentImage" alt="">
+                                        </div>
+                                        <div class="entry-footer">
+                                            <div class="post-author text-grey">Chức Danh: @item.DepartmentJobTitle</div>
+                                            <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
+                                        </div>
+                                    </div>
+                                    <div style="height: 2px;" class="divider"></div>
+                                    <div class="body mb-2">
+                                        <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            Email: @item.DepartmentEmail<br />
+                                            Liên hệ: @item.DepartmentPhone
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
         </div>
         
     </div> <!-- .container -->
 </div> <!-- .page-section -->
 <!-- .page-section -->
-<div class="page-section border-top">
-    <div class="container">
-        <div class="text-center wow fadeInUp">
-            <div class="subhead">Cơ cấu Tổ Chức</div>
-            <h2 class="title-section">Ban <span class="marked">Lãnh Đạo </span> của CoSis2</h2>
-            <div class="divider mx-auto"></div>
-        </div>
-        <div class="row my-4 card-blog-row">
-            @foreach (var item in Model)
-            {
-                    @if(item.DepartmentStrucId == 1)
-                    {
-                    <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
-                        <div class="card-blog">
-                            <div class="header">
-                                <div class="avatar">
-                                    <img src="~/img/@item.DepartmentImage" alt="">
-                                </div>
-                                <div class="entry-footer">
-                                    <div class="post-author text-grey">@item.DepartmentJobTitle</div>
-                                    <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
-                                </div>
-                            </div>
-                            <div style="height: 2px;" class="divider"></div>
-                            <div class="body mb-1">
-                                <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
-                            </div>
-                            <div class="footer">
-                                <div>
-                                    Email: @item.DepartmentEmail<br />
-                                    Liên hệ: @item.DepartmentPhone
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    }
-            }
-        </div>
 
-   
-    </div> <!-- .container -->
-</div> <!-- .page-section -->
-
-<div class="container">
-    <div class="text-center wow fadeInUp">
-        <div class="subhead">Cơ cấu Tổ Chức</div>
-        <h2 class="title-section">Phòng <span class="marked">Quản Lí Tổng Hợp </span> của CoSis2</h2>
-        <div class="divider mx-auto"></div>
-    </div>
-    <div class="row my-4 card-blog-row">
-        @foreach (var item in Model)
-        {
-            @if (item.DepartmentStrucId == 2)
-            {
-                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
-                    <div class="card-blog">
-                        <div class="header">
-                            <div class="avatar">
-                                <img src="~/img/@item.DepartmentImage" alt="">
-                            </div>
-                            <div class="entry-footer">
-                                <div class="post-author text-grey">@item.DepartmentJobTitle</div>
-                                <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
-                            </div>
-                        </div>
-                        <div style="height: 2px;" class="divider"></div>
-                        <div class="body mb-1">
-                            <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
-                        </div>
-                        <div class="footer">
-                            <div>
-                                Email: @item.DepartmentEmail<br />
-                                Liên hệ: @item.DepartmentPhone
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-</div> <!-- .container -->
-
-<div class="container">
-    <div class="text-center wow fadeInUp">
-        <div class="subhead">Cơ cấu Tổ Chức</div>
-        <h2 class="title-section">Phòng <span class="marked">Nội Dung Thông Tin Số</span> của CoSis2</h2>
-        <div class="divider mx-auto"></div>
-    </div>
-    
-    <div class="row my-4 card-blog-row">
-        @foreach (var item in Model)
-        {
-            @if (item.DepartmentStrucId == 3)
-            {
-                <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
-                    <div class="card-blog">
-                        <div class="header">
-                            <div class="avatar">
-                                <img src="~/img/@item.DepartmentImage" alt="">
-                            </div>
-                            <div class="entry-footer">
-                                <div class="post-author text-grey">@item.DepartmentJobTitle</div>
-                                <strong><h5 class="text-danger">@item.DepartmentName</h5></strong>
-                            </div>
-                        </div>
-                        <div style="height: 2px;" class="divider"></div>
-                        <div class="body mb-2">
-                            <div class="post-excerpt">@Html.Raw(item.DepartmentDescrip)</div>
-                        </div>
-                        <div class="footer">
-                            <div>
-                                Email: @item.DepartmentEmail<br />
-                                Liên hệ: @item.DepartmentPhone
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-    </div>
-</div> <!-- .container -->
 
 <script>
 

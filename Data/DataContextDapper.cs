@@ -31,6 +31,12 @@ namespace Website.Data
             return dbConnection.Execute(sql) > 0;
         }
 
+        public bool ExecuteSql(string sql, object parameters = null)
+        {
+            IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            return dbConnection.Execute(sql, parameters) > 0;
+        }
+
         public int ExecuteSqlWithRowCount(string sql)
         {
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
@@ -83,7 +89,6 @@ namespace Website.Data
             IDbConnection dbConnection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             return dbConnection.QuerySingle<T>(sql);
         }
-
 
     }
 }

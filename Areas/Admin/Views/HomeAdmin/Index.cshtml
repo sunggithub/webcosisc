@@ -7,30 +7,31 @@
 }
 <div id="page-wrapper">
     <h1 class="page-header">
-        Welcome to Admin Dashboard
+        Chào Mừng đến với Trang Admin
         <!-- <small>
         </small> -->
     </h1>
 
-    <form action="" method="post">
+    <form action="~/Admin/HomeAdmin/ApplyAction" method="post">
+        <div style="padding-left: 0; padding-right: 0px;" class="col-xs-4">
+            <select class="form-control" id="action" name="action">
+                <option value="">Select Option</option>
+                <option value="published">Publish</option>
+                <option value="draft">Draft</option>
+                <option value="delete">Delete</option>
+                <option value="clone">Clone</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <input type="submit" class="btn btn-success" name="submit" placeholder="" value="Apply">
+            <a class="btn btn-primary" href="~/Admin/HomeAdmin/CreateNews">Thêm Blog</a>
+        </div>
+        <input type="hidden" id="selectedIds" name="selectedIds" />
+    </form>
         <table class="table table-bordered table-hover">
-            <div id="bulkOptionsContainer" style="padding-left: 0; padding-right: 0px;" class="col-xs-4">
-                <select class="form-control" name="bulk_options" id="">
-                    <option value="">Select Option</option>
-                    <option value="published">Publish</option>
-                    <option value="draft">Draft</option>
-                   
-                    <option value="clone">Clone</option>
-                </select>
-            </div>
-            <div class="col-xs-4">
-                <input type="submit" class="btn btn-success" name="submit" id="" placeholder="" value="Apply">
-                <a class="btn btn-primary" href="~/Admin/HomeAdmin/CreateNews">Thêm Blog</a>
-            </div>
-
             <thead>
                 <tr>
-                    <th><input id="selectAllBoxes" type="checkbox"></th>
+                    <th><input type="checkbox" id="selectAll" /></th>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Author</th>
@@ -47,8 +48,8 @@
                 @foreach(var item in ViewBag.News)
                  {
                 <tr>
-                    
-                        <td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $news_id; ?>'> </td>
+
+                        <td><input type="checkbox" name="selectedIds" value="@item.NewsId" /></td>
                         <td> @item.NewsId </td>
                         <td>
                             @foreach(var iteam in ViewBag.NewsCategory)
@@ -77,13 +78,32 @@
                         <td> <a href="~/Blog/BlogDetail?blog=@item.NewsId"> View News </a></td>
                         <td> <a href="~/Admin/HomeAdmin/EditNews?editNews=@item.NewsId"> Edit </a></td>
                     
-                    
                 </tr>
                 }
             </tbody>
         </table>
-
-    </form>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $('#selectAll').change(function () {
+            var isChecked = $(this).prop('checked');
+            $('input[name="selectedIds"]').prop('checked', isChecked);
+            updateSelectedIds();
+        });
 
+        $('input[name="selectedIds"]').change(function () {
+            var anyUnchecked = $('input[name="selectedIds"]:not(:checked)').length > 0;
+            $('#selectAll').prop('checked', !anyUnchecked);
+            updateSelectedIds();
+        });
+
+        function updateSelectedIds() {
+            var selectedIds = $('input[name="selectedIds"]:checked').map(function () {
+                return this.value;
+            }).get().join(',');
+
+            $('#selectedIds').val(selectedIds);
+        }
+    });
+</script>

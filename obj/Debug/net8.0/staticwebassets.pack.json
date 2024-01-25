@@ -4273,8 +4273,56 @@
       "PackagePath": "staticwebassets\\font-awesome\\scss\\font-awesome.scss"
     },
     {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\1.png",
+      "PackagePath": "staticwebassets\\img\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\2.png",
+      "PackagePath": "staticwebassets\\img\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\3.png",
+      "PackagePath": "staticwebassets\\img\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\4.png",
+      "PackagePath": "staticwebassets\\img\\4.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\5.png",
+      "PackagePath": "staticwebassets\\img\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\6.png",
+      "PackagePath": "staticwebassets\\img\\6.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\7.png",
+      "PackagePath": "staticwebassets\\img\\7.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\8.png",
+      "PackagePath": "staticwebassets\\img\\8.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\DSC_9658 copy.jpg",
+      "PackagePath": "staticwebassets\\img\\DSC_9658 copy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\TRUNG TAM TIN HOC.png",
+      "PackagePath": "staticwebassets\\img\\TRUNG TAM TIN HOC.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\a259fd20-25f9-41d2-aca7-2644978f628f.jpg",
+      "PackagePath": "staticwebassets\\img\\a259fd20-25f9-41d2-aca7-2644978f628f.jpg"
+    },
+    {
       "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\b1c4cedd07881c64da19ce2863937ab5.jpg",
       "PackagePath": "staticwebassets\\img\\b1c4cedd07881c64da19ce2863937ab5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\banner.png",
+      "PackagePath": "staticwebassets\\img\\banner.png"
     },
     {
       "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\bg_image_1.png",
@@ -4285,8 +4333,28 @@
       "PackagePath": "staticwebassets\\img\\bg_image_3.png"
     },
     {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\final.png",
+      "PackagePath": "staticwebassets\\img\\final.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\hoi-nghi-khao-sat-muc-song-dan-cu-va-lap-bang-ke-dieu-tra-dan-so-va-nha-o-giua-ky-nam-2024.jpg",
+      "PackagePath": "staticwebassets\\img\\hoi-nghi-khao-sat-muc-song-dan-cu-va-lap-bang-ke-dieu-tra-dan-so-va-nha-o-giua-ky-nam-2024.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\ldvl.jpg",
+      "PackagePath": "staticwebassets\\img\\ldvl.jpg"
+    },
+    {
       "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\pastel-pink-8e3509gb6imnkpg8 (1).jpg",
       "PackagePath": "staticwebassets\\img\\pastel-pink-8e3509gb6imnkpg8 (1).jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\tong-cuc-thong-ke-to-chuc-hoi-nghi-trien-khai-ke-hoach-cong-tac-nam-2023-17.jpg",
+      "PackagePath": "staticwebassets\\img\\tong-cuc-thong-ke-to-chuc-hoi-nghi-trien-khai-ke-hoach-cong-tac-nam-2023-17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\img\\tải xuống.png",
+      "PackagePath": "staticwebassets\\img\\tải xuống.png"
     },
     {
       "Id": "C:\\Users\\User\\source\\repos\\Website\\wwwroot\\js\\bootstrap.min.js",

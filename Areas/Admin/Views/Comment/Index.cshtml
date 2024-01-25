@@ -11,12 +11,47 @@
         <!-- <small>
         </small> -->
     </h1>
-
-    <p>
-    </p>
+    <div class="container mt-3">
+        <form method="post" action="/Admin/Comment/ApplyAction">   
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" class="form-control" id="startDate" name="startDate">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="action">Action:</label>
+                        <select class="form-control" id="action" name="action">
+                            <option value="">Chọn Option</option>
+                            <option value="delete">Delete</option>
+                            <option value="approve">Approve</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button type="submit" class="btn btn-primary">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="selectedIds" name="selectedIds" />
+        </form>
+    </div>
     <table class="table">
     <thead>
         <tr>
+            <th>
+                <input type="checkbox" id="selectAll" />
+            </th>
             <th>
                 Id
             </th>
@@ -44,43 +79,83 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentNewsId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentAuthor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentEmail)
-                
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentContent)
-            </td>
-            <td> 
-                <a href="~/Admin/Comment?approve=@item.CommentId"> Approve </a>
-            </td>
-            <td>
-                <a href="~/Admin/Comment?unapprove=@item.CommentId"> Unapprove </a>
-            </td>
-            <td>
-                @Html.ActionLink("Details", "BlogDetail", "Blog", new { blog = item.CommentNewsId , area = "" })
- |
-                @Html.ActionLink("Delete", "DeleteComment", new { delete = item.CommentId })
-            </td>
-        </tr>
-    }
-    </tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+
+                            <input type="checkbox" name="selectedIds" value="@item.CommentId" />
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentNewsId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentAuthor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentEmail)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CommentContent)
+                        </td>
+                        <td> 
+                            <a href="~/Admin/Comment?approve=@item.CommentId"> Approve </a>
+                        </td>
+                        <td>
+                            <a href="~/Admin/Comment?unapprove=@item.CommentId"> Unapprove </a>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "BlogDetail", "Blog", new { blog = item.CommentNewsId , area = "" })
+                            |
+                            @Html.ActionLink("Delete", "DeleteComment", new { delete = item.CommentId })
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
     </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#selectAll').change(function () {
+            // Lấy trạng thái của checkbox chọn tất cả
+            var isChecked = $(this).prop('checked');
+            // Đặt trạng thái của tất cả các checkbox trong tbody theo trạng thái của checkbox chọn tất cả
+            $('input[name="selectedIds"]').prop('checked', isChecked);
+            updateSelectedIds();
+        });
+
+        // Lắng nghe sự kiện khi một checkbox bất kỳ trong tbody thay đổi
+        $('input[name="selectedIds"]').change(function () {
+            var anyUnchecked = $('input[name="selectedIds"]:not(:checked)').length > 0;
+            // Đặt trạng thái của checkbox chọn tất cả dựa trên trạng thái của các checkbox trong tbody
+            $('#selectAll').prop('checked', !anyUnchecked);
+            // Cập nhật giá trị cho hidden field
+            updateSelectedIds();
+        });
+
+        // Hàm cập nhật giá trị cho hidden field
+        function updateSelectedIds() {
+            var selectedIds = $('input[name="selectedIds"]:checked').map(function () {
+                return this.value;
+            }).get().join(',');
+
+            $('#selectedIds').val(selectedIds);
+        }
+    });
+</script>

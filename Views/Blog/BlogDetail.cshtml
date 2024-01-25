@@ -1,17 +1,18 @@
-﻿@model IEnumerable<Website.Models.News>
+﻿@using System.Security.Claims
+@model IEnumerable<Website.Models.News>
 @{
     ViewData["Title"] = "BlogDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var count = 0;
     }
 
-<div class="page-section pt-5">
+<div class="page-section mt-3">
     <div class="container">
         <nav aria-label="Breadcrumb">
             <ul class="breadcrumb p-0 mb-0 bg-transparent">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
-                <li class="breadcrumb-item active">Second divided from form fish beastr</li>
+                <li class="breadcrumb-item active">Bản tin</li>
             </ul>
         </nav>
 
@@ -22,12 +23,12 @@
                     {
                         <div class="header">
                             <div class="post-thumb">
-                                <img src="../assets/img/blog/blog-1.jpg" alt="">
+                                <img src="~/img/@item.NewsImage" alt="">
                             </div>
                             <div class="meta-header">
                                 <div class="post-author">
                                     <div class="avatar">
-                                        <img src="../assets/img/person/person_1.jpg" alt="">
+                                        <img src="~/img/b1c4cedd07881c64da19ce2863937ab5.jpg" alt="">
                                     </div>
                                     by <a href="#">@item.NewsAuthor</a>
                                 </div>
@@ -56,52 +57,96 @@
                                     @(ViewBag.Comment?.Count ?? 0) Bình Luận
                                 </a>
                             </div>
+                            <div class="post-comment-count ml-2">
+                                <span class="icon">
+                                    <span class="mai-eye-outline"></span>
+                                </span>
+                                <a href="#">
+                                    @item.NewsView Lượt Xem
+                                </a>
+                            </div>
                         </div>
                         <div class="post-content">
                             <p>@Html.Raw(item.NewsContent)</p>
-                            <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui saepe aliquid perferendis neque eos commodi nulla, veniam ex mollitia, quod dignissimos id exercitationem corporis. At optio laudantium suscipit in nam!</p>
-                            <blockquote class="quote">
-                                “I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.”
-                                <span class="author">― Marilyn Monroe</span>
-                            </blockquote>
-                            <p>Praesent vel mi bibendum, finibus leo ac, condimentum arcu. Pellentesque sem ex, tristique sit amet suscipit in, mattis imperdiet enim. Integer tempus justo nec velit fringilla, eget eleifend neque blandit. Sed tempor magna sed congue auctor. Mauris eu turpis eget tortor ultricies elementum. Phasellus vel placerat orci, a venenatis justo. Phasellus faucibus venenatis nisl vitae vestibulum. Praesent id nibh arcu. Vivamus sagittis accumsan felis, quis vulputate</p>
                         </div>
                         
                     }
                     
                 </div>
-
+                @if (!string.IsNullOrEmpty(TempData["CommentSuccessMessage"]?.ToString()))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["CommentSuccessMessage"]
+                    </div>
+                }
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <h2 class="mb-5">Để lại Bình Luận</h2>
+                    <h2 class="">Để lại Bình Luận</h2>
+                    <div class="comment-form-wrap pt-5">
+                        <form method="post" action="~/Blog/BlogDetail?blog=@ViewBag.SingleBlog[0]?.NewsId" class="">
+                            <!-- Đây là form cho người dùng đã đăng nhập -->
+                            <div class="media pt-1">
+                                <a class="pull-left" href="#">
+                                    <img style="width: 64px; height:64px; object-fit:cover; border:1px solid black;" class="media-object img-fluid" src="~/img/@User.FindFirst("UserImage")?.Value" alt="">
+                                </a>
+                                <div class="media-body">
+                                    <h4 style="margin-top: 15px" class="media-heading">
+                                        @User.FindFirst("UserFirstName")?.Value
+                                        @User.FindFirst("UserLastName")?.Value
+                                        <input type="hidden" name="CommentAuthor" value="@User.FindFirst("UserFirstName")?.Value">
+                                        <input type="hidden" name="CommentEmail" value="@User.FindFirst(ClaimTypes.Name)?.Value">
+                                    </h4>  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment"></label>
+                                <textarea name="CommentContent" id="comment" cols="30" rows="8" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <form method="post" action="~/Blog/BlogDetail?blog=@ViewBag.SingleBlog[0]?.NewsId">
+                                    <input type="hidden" name="create" value="" />
+                                    <button class="btn btn-primary" type="submit">Bình Luận</button>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
                 }
-                <div class="comment-form-wrap pt-5">
-                    <h2 class="mb-5">Để lại Bình Luận</h2>
-                    <form method="post" action="~/Blog/BlogDetail?blog=@foreach(var item in ViewBag.SingleBlog){@item.NewsId}" class="">
-                        <div class="form-row form-group">
-                            <div class="col-md-6">
-                                <label for="name">Họ Tên *</label>
-                                <input type="text" class="form-control" id="name" name="CommentAuthor">
+                else
+                {
+                    <div class="comment-form-wrap pt-5">
+                        <h2 class="mb-5">Để lại Bình Luận</h2>
+                        <form method="post" action="~/Blog/BlogDetail?blog=@foreach(var item in ViewBag.SingleBlog){@item.NewsId}" class="">
+                            <div class="form-row form-group">
+                                <div class="col-md-6">
+                                    <label for="name">Họ Tên *</label>
+                                    <input type="text" class="form-control" id="name" name="CommentAuthor" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="CommentEmail" required>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="email">Email *</label>
-                                <input type="email" class="form-control" id="email" name="CommentEmail">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="message">Bình Luận</label>
-                            <textarea name="CommentContent" id="message" cols="30" rows="8" class="form-control"></textarea>
+                            <div class="form-group">
+                                <label for="message">Bình Luận</label>
+                                <textarea name="CommentContent" id="message" cols="30" rows="8" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <form method="post" action="~/Blog/BlogDetail?blog=@ViewBag.SingleBlog[0]?.NewsId">
+                                    <input type="hidden" name="create" value="" />
+                                    <button class="btn btn-primary" type="submit">Bình Luận</button>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                    @if (!string.IsNullOrEmpty(ViewBag.CommentSuccessMessage))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @ViewBag.CommentSuccessMessage
                         </div>
-                        <div class="form-group">
-                            <form method="post" action="~/Blog/BlogDetail?blog=@ViewBag.SingleBlog[0]?.NewsId">
-                                <input type="hidden" name="create" value="" />
-                                <button class="btn btn-primary" type="submit">Bình Luận</button>
-                            </form>
-                        </div>
-                    </form>
-                </div>
+                    }
+                }
+
 
                 <hr>
                 @foreach(var item in ViewBag.Comment)
@@ -126,8 +171,8 @@
                 <div class="widget">
                     <!-- Widget search -->
                     <div class="widget-box">
-                        <form action="#" class="search-widget">
-                            <input type="text" class="form-control" placeholder="Enter keyword..">
+                        <form action="~/Blog/SearchResults" class="search-widget" method="post">
+                            <input type="text" class="form-control" placeholder="Enter keyword.." name="searchKeyword">
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </form>
                     </div>
@@ -138,32 +183,31 @@
                         <div class="divider"></div>
 
                         <ul class="categories">
-                            <li><a href="#">LifeStyle</a></li>
-                            <li><a href="#">Food</a></li>
-                            <li><a href="#">Healthy</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Entertainment</a></li>
+                            @foreach (var item in ViewBag.CategoryNews)
+                            {
+                                <li><a href="~/Blog/Category?category=@item.NewsCategoryId">@item.NewsCategoryTitle</a></li>
+                            }
                         </ul>
                     </div>
 
                     <!-- Widget recent post -->
                     <div class="widget-box">
-                        <h4 class="widget-title">Recent Post</h4>
+                        <h4 class="widget-title">Tin Mới</h4>
                         <div class="divider"></div>
                         @foreach(var item in ViewBag.NewNews)
                         {
                             if(count < 3)
                             {
                                 <div class="blog-item">
-                                    <a class="post-thumb" href="">
-                                        <img src="../assets/img/blog/blog-1.jpg" alt="">
+                                    <a class="post-thumb" href="#">
+                                        <img src="~/img/@item.NewsImage" alt="">
                                     </a>
                                     <div class="content">
                                         <h6 class="post-title"><a href="~/Blog/BlogDetail?blog=@item.NewsId">@item.NewsTitle</a></h6>
                                         <div class="meta">
-                                            <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
-                                            <a href="#"><span class="mai-person"></span> Admin</a>
-                                            <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                                            <a href="#"><span class="mai-calendar"></span>@item.NewsDate</a>
+                                            <a href="#"><span class="mai-eye"></span> @item.NewsView</a>
+                                            <a href="#"><span class="mai-chatbubbles"></span> @(ViewBag.Comment?.Count ?? 0)</a>
                                         </div>
                                     </div>
                                 </div>

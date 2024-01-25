@@ -27,26 +27,29 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-md-6 col-lg-4 py-3">
-                    <div class="card-blog">
-                        <div class="header">
-                            <div class="avatar">
-                                <img src="~/img/@item.NewsImage" alt="">
+                @if (item.NewsStatus == "published")
+                {
+                    <div class="col-md-6 col-lg-4 py-3">
+                        <div class="card-blog">
+                            <div class="header">
+                                <div class="avatar mb-2">
+                                    <img class="img-fluid" src="~/img/@item.NewsImage" alt="">
+                                </div>
+                                <div class="entry-footer">
+                                    <div class="post-author">@item.NewsAuthor</div>
+                                    <a href="#" class="post-date">@item.NewsDate</a>
+                                </div>
                             </div>
-                            <div class="entry-footer">
-                                <div class="post-author">@item.NewsAuthor</div>
-                                <a href="#" class="post-date">@item.NewsDate</a>
+                            <div class="body">
+                                <div class="post-title two-line-text"><a href="~/Blog/BlogDetail?blog=@item.NewsId">@item.NewsTitle</a></div>
+                                <div class="post-excerpt two-line-text">@Html.Raw(item.NewsContent)</div>
                             </div>
-                        </div>
-                        <div class="body">
-                            <div class="post-title text-"><a href="~/Blog/BlogDetail?blog=@item.NewsId">@item.NewsTitle</a></div>
-                            
-                        </div>
-                        <div class="footer">
-                            <a href="~/Blog/BlogDetail?blog=@item.NewsId">Read More <span class="mai-chevron-forward text-sm"></span></a>
+                            <div class="footer">
+                                <a href="~/Blog/BlogDetail?blog=@item.NewsId">Xem Thêm <span class="mai-chevron-forward text-sm"></span></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
 
         </div>

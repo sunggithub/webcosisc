@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Website.Models.Product>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var count = 0;
+}
+
+<div class="page-section mt-3">
+    <div class="container">
+        <nav aria-label="Breadcrumb">
+            <ul class="breadcrumb p-0 mb-0 bg-transparent">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="~/Service">Service</a></li>
+                <li class="breadcrumb-item active">Chi tiết Sản phẩm</li>
+            </ul>
+        </nav>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog-single-wrap">
+                    @foreach (var item in ViewBag.SingleProduct)
+                    {
+                        <div class="header">
+                            <div class="post-thumb">
+                                <img src="~/img/@item.ProductImage" alt="">
+                            </div>
+                            <div class="meta-header">
+                                <div class="post-author">
+                                    <div class="avatar">
+                                        <img src="~/img/" alt="">
+                                    </div>
+                                    by <a href="#">@item.ProductAuthor</a>
+                                </div>
+
+                                <div class="post-sharer">
+                                    <a href="#" class="btn social-facebook"><span class="mai-logo-facebook-f"></span></a>
+                                    <a href="#" class="btn social-twitter"><span class="mai-logo-twitter"></span></a>
+                                    <a href="#" class="btn social-linkedin"><span class="mai-logo-linkedin"></span></a>
+                                    <a href="#" class="btn"><span class="mai-mail"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1 class="post-title">@item.ProductTitle</h1>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <span class="icon">
+                                    <span class="mai-time-outline"></span>
+                                </span> <a href="#">@item.ProductReleaseDate</a>
+                            </div>
+                            <div class="post-comment-count ml-2">
+                                <span class="icon">
+                                    <span class="mai-eye-outline"></span>
+                                </span>
+                                <a href="#">
+                                    0 Lượt Xem
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>@Html.Raw(item.ProductDescription)</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+               
+            <div class="col-lg-4">
+                <div class="widget">
+                    <!-- Widget search -->
+                    <div class="widget-box">
+                        <form action="~/Blog/SearchResults" class="search-widget" method="post">
+                            <input type="text" class="form-control" placeholder="Enter keyword.." name="searchKeyword">
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </form>
+                    </div>
+
+                    <!-- Widget Categories -->
+                    <div class="widget-box">
+                        <h4 class="widget-title">Category</h4>
+                        <div class="divider"></div>
+
+                        <ul class="categories">
+                            @foreach (var item in ViewBag.CategoryNews)
+                            {
+                                <li><a href="~/Blog/Category?category=@item.NewsCategoryId">@item.NewsCategoryTitle</a></li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Widget recent post -->
+                    <div class="widget-box">
+                        <h4 class="widget-title">Sản phẩm liên quan</h4>
+                        <div class="divider"></div>
+                        @foreach (var item in ViewBag.ProductRelate)
+                        {
+                            if (count < 3)
+                            {
+                                <div class="blog-item">
+                                    <a class="post-thumb" href="#">
+                                        <img src="~/img/@item.ProductImage" alt="">
+                                    </a>
+                                    <div class="content">
+                                        <h6 class="post-title"><a href="">@item.ProductTitle</a></h6>
+                                        <div class="meta">
+                                            <a href="#"><span class="mai-calendar"></span>@item.ProductReleaseDate</a>
+                                            <a href="#"><span class="mai-eye"></span>0</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                count++;
+
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+</div>

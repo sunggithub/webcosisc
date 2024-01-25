@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -64,7 +64,7 @@ a {
 }
 
     a:hover {
-        color: #5641df;
+        color: #9F0311;
         text-decoration: underline;
     }
 
@@ -1628,10 +1628,12 @@ a.text-dark:hover, a.text-dark:focus {
     .features h5 {
         color: #2D2B3A;
     }
+
     .features p {
-        font-size: 13px;
+        font-size: 16px;
         color: #898798;
     }
+    
 
     
 
@@ -1747,9 +1749,9 @@ a.text-dark:hover, a.text-dark:focus {
     display: block;
     margin: 0 auto;
     padding: 32px 20px 70px 20px;
-    max-width: 350px;
+    max-width: 380px;
     min-height: 250px;
-    height:  620px;
+    height:  550px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(100, 95, 136, 0.16);
 }
@@ -1760,15 +1762,18 @@ a.text-dark:hover, a.text-dark:focus {
 
     .card-blog .avatar {
         position: relative;
-        display: inline-block;
+        display: block;
         max-width: 350px;
-        min-height: 270px;
-        max-height: 270px;
+        height: 250px;
         border-radius: 5%;
         background-color: #d3d0e4;
         overflow: hidden;
     }
-
+        .card-blog .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Chọn loại object-fit tùy thuộc vào yêu cầu của bạn */
+        }
 
 
     .card-blog .entry-footer {
@@ -1798,20 +1803,35 @@ a.text-dark:hover, a.text-dark:focus {
 
     .card-blog .post-excerpt {
         font-size: 14px;
-        color: black;
+        color: #898798;
     }
 
-    .card-blog .footer {
-        position: absolute;
-        color: brown;
-        bottom: 20px;
-        left: 20px;
-        font-size: 14px;
+        .card-blog .post-excerpt h1,
+        .card-blog .post-excerpt h2,
+        .card-blog .post-excerpt h3,
+        .card-blog .post-excerpt h4,
+        .card-blog .post-excerpt h5 {
+            font-size: 14px;
+            color: #898798;
+        }
+
+        .card-blog .footer {
+            position: absolute;
+            color: brown;
+            bottom: 20px;
+            left: 20px;
+            font-size: 14px;
+        }
+    .card-blog .two-line-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
 .card-blog-row *:first-child .card-blog {
-    background-color: #9F0311;
-}
+        background-color: #fff;
+    }
 
     .card-blog-row *:first-child .card-blog .post-author,
     .card-blog-row *:first-child .card-blog .post-title a,
@@ -2060,7 +2080,8 @@ a.text-dark:hover, a.text-dark:focus {
         }
 
         .blog-single-wrap .post-meta .post-date,
-        .blog-single-wrap .post-meta .post-comment-count {
+        .blog-single-wrap .post-meta .post-comment-count
+        {
             display: inline-block;
         }
 
@@ -2320,6 +2341,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .tab-item.active {
     opacity: 1;
+
+    border-color: rgba(194, 53, 100, 0.9);
 }
 
 .tab-content {
@@ -2397,4 +2420,22 @@ a.text-dark:hover, a.text-dark:focus {
 .media-heading {
     margin-top: 0;
     margin-bottom: 5px;
+}
+
+/*scroll bar*/
+.scrollable-div {
+    max-height: 120px; /* Độ cao tối đa của vùng có thể cuộn */
+    overflow-y: auto; /* Kích thước thanh cuộn sẽ xuất hiện chỉ khi nội dung vượt quá độ cao tối đa */
+}
+::-webkit-scrollbar {
+    width: 6px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9F0311;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; 
 }

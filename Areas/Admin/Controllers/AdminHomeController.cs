@@ -3,6 +3,7 @@ using Website.Data;
 using Website.Models;
 using Microsoft.AspNetCore.Authorization;
 using Website.Helpers;
+using System.Xml.Linq;
 
 namespace Website.Areas.Admin.Controllers
 {
@@ -11,7 +12,6 @@ namespace Website.Areas.Admin.Controllers
     {
         private readonly DataContextDapper _dapper;
         private readonly AuthHelper _authHelper;
-
         public HomeAdminController(IConfiguration config)
         {
             _dapper = new DataContextDapper(config);
@@ -21,26 +21,34 @@ namespace Website.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-               string sql = @"SELECT [NewsId],
-                            [NewsCategoryId],
-                            [NewsTitle],
-                            [NewsAuthor],
-                            [NewsImage],
-                            [NewsDate],
-                            [NewsContent],
-                            [NewsStatus],
-                            [NewsView] 
-                        FROM News";
-                var news = _dapper.LoadData<News>(sql);
+            string sql = @"SELECT [NewsId],
+                        [NewsCategoryId],
+                        [NewsTitle],
+                        [NewsAuthor],
+                        [NewsImage],
+                        [NewsDate],
+                        [NewsContent],
+                        [NewsStatus],
+                        [NewsView] 
+                    FROM News ORDER BY NewsDate DESC";
+            var news = _dapper.LoadData<News>(sql);
 
-                string sqlcate = @"SELECT [NewsCategoryId],
-                            [NewsCategoryTitle] FROM NewsCategory";
-                var newsCategory = _dapper.LoadData<NewsCategory>(sqlcate);
+            string sqlcate = @"SELECT [NewsCategoryId],
+                        [NewsCategoryTitle] FROM NewsCategory";
+            var newsCategory = _dapper.LoadData<NewsCategory>(sqlcate);
 
-                ViewBag.News = news;
-                ViewBag.NewsCategory = newsCategory;
+            string sqlcontact = @"SELECT [ContactId],
+                                [UserNameContact],
+                                [UserEmailContact],
+                                [ContentContact],
+                                [ContactDate] FROM Contact ORDER BY ContactDate DESC";
+            var contact = _dapper.LoadData<Contact>(sqlcontact);
 
-                return View();
+            ViewBag.Contact = contact;
+            ViewBag.News = news;
+            ViewBag.NewsCategory = newsCategory;
+
+            return View();
             
         }
 
@@ -213,6 +221,80 @@ namespace Website.Areas.Admin.Controllers
             throw new Exception("Failed to delete category!");
         }
 
+        [HttpPost]
+        public IActionResult ApplyAction(IFormCollection form)
+        {
+            string action = form["action"].FirstOrDefault() ?? string.Empty;
+            string selectedIds = form["selectedIds"].FirstOrDefault() ?? string.Empty;
 
+            if (string.IsNullOrEmpty(action) || string.IsNullOrEmpty(selectedIds))
+            {
+                return RedirectToAction("Error");
+            }
+
+            List<int> selectedIdList = selectedIds.Split(',').Select(int.Parse).ToList();
+
+            switch (action)
+            {
+                case "published":
+                    foreach (int newsId in selectedIdList)
+                    {
+                        string sqlpublish = @"UPDATE News SET NewsStatus = 'published' WHERE NewsId = " + newsId;
+                        _dapper.ExecuteSql(sqlpublish);
+                    }
+                    break;
+
+                case "draft":
+                    foreach (int newsId in selectedIdList)
+                    {
+                        string sqldraft = @"UPDATE News SET NewsStatus = 'draft' WHERE NewsId = " + newsId;
+                        _dapper.ExecuteSql(sqldraft);
+                    }
+                    break;
+
+                case "delete":
+                    foreach (int newsId in selectedIdList)
+                    {
+                        string sqldelete = @"DELETE FROM NewsCategory WHERE NewsCategoryId = " + newsId;
+                        _dapper.ExecuteSql(sqldelete);
+                    }
+                    break;
+
+                case "clone":
+                    foreach (int newsId in selectedIdList)
+                    {
+                        string sqlclone = @"INSERT INTO News (
+                                                [NewsCategoryId],
+                                                [NewsTitle],
+                                                [NewsAuthor],
+                                                [NewsImage],
+                                                [NewsDate],
+                                                [NewsContent],
+                                                [NewsStatus],
+                                                [NewsView])
+                                                SELECT
+                                                [NewsCategoryId],
+                                                [NewsTitle],
+                                                [NewsAuthor],
+                                                [NewsImage],
+                                                [NewsDate],
+                                                [NewsContent],
+                                                [NewsStatus],
+                                                [NewsView]
+                                                FROM News
+                                                WHERE NewsId = " + newsId;
+                        _dapper.ExecuteSql(sqlclone);
+                    }
+                    break;
+
+                default:
+                    // Xử lý khi action không hợp lệ
+                    // Có thể chuyển hướng đến trang lỗi hoặc hiển thị thông báo lỗi
+                    return RedirectToAction("Error");
+            }
+
+            // Chuyển hướng hoặc trả về view tùy thuộc vào logic của bạn
+            return RedirectToAction("Index");
+        }
     }
 }

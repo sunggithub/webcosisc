@@ -26,7 +26,6 @@ namespace Website.Controllers
             _authHelper = new AuthHelper(config);
         }
 
-
         [AllowAnonymous]
         public IActionResult Register()
         {
@@ -86,9 +85,12 @@ namespace Website.Controllers
                                 "', 'user')";
                         if (_dapper.ExecuteSql(sqlAddUser))
                         {
-                            return Ok();
+                            TempData["successMessage"] = "User registered successfully";
+                        }else
+                        {
+                            TempData["errorMessage"] = "Error registering user";
                         }
-                        throw new Exception("Failed to add user.");
+                        return RedirectToAction("Register");
                     }
                     throw new Exception("Failed to register user.");
                 }
@@ -139,15 +141,18 @@ namespace Website.Controllers
                                         [UserFirstName],
                                         [UserLastName],
                                         [UserPassword],
-                                        [UserRole] FROM Users WHERE UserName = '" + userForLogin.Email + "'";
+                                        [UserRole],
+                                        [UserImage] FROM Users WHERE UserName = '" + userForLogin.Email + "'";
                     var userData = _dapper.LoadDataSingle<User>(selectsql);
                     if (!string.IsNullOrEmpty(role) && role.Trim().ToLower() == "admin" && userData != null)
                     {
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Name, userData.UserName),
+                            new Claim("UserId", userData.UserId.ToString()),
                             new Claim("UserFirstName", userData.UserFirstName),
                             new Claim("UserLastName", userData.UserLastName),
+                            new Claim("UserImage", userData.UserImage),
                             new Claim(ClaimTypes.Role, userData.UserRole),
                             // Thêm các thông tin khác vào claim nếu cần
                         };
@@ -180,6 +185,7 @@ namespace Website.Controllers
                             new Claim(ClaimTypes.Name, userData.UserName),
                             new Claim("UserFirstName", userData.UserFirstName),
                             new Claim("UserLastName", userData.UserLastName),
+                            new Claim("UserImage", userData.UserImage),
                             new Claim(ClaimTypes.Role, userData.UserRole),
                             // Thêm các thông tin khác vào claim nếu cần
                         };

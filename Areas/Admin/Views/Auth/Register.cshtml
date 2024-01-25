@@ -47,7 +47,19 @@
                         <input asp-for="UserLastName" type="text" id="key" class="form-control" placeholder="Tên">
                     </div>
                     <div class="form-group">
-                        <p class="text-danger">@TempData["error"] </p>
+                        @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+                        {
+                            <div style="color: green; font-weight: bold;">
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                        {
+                            <div style="color: red; font-weight: bold;">
+                                @ViewBag.ErrorMessage
+                            </div>
+                        }
                     </div>
                     <input type="submit" name="submit" id="btn-login" class="btn btn-outline-danger btn-custom btn-lg btn-block" value="Đăng Kí">
                 </form>

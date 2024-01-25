@@ -1,0 +1,81 @@
+﻿@using X.PagedList;
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string areaValue = Model.PageNumber == 1 ? "" : "";
+}
+
+<div class="container mt-3">
+    <div class="page-banner">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-md-6">
+                <nav aria-label="Breadcrumb">
+                    <ul class="breadcrumb justify-content-center py-0 bg-transparent">
+                        <li class="breadcrumb-item"><a href="~/Home">Trang Chủ</a></li>
+                        <li class="breadcrumb-item"><a href="~/Blog">Tin Tức</a></li>
+                        <li class="breadcrumb-item active">Category</li>
+                    </ul>
+                </nav>
+                <h1 class="text-center">Category '@foreach (var item in ViewBag.CategoryNews){@item.NewsCategoryTitle}'</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 py-3">
+                    <div class="card-blog">
+                        <div class="header">
+                            <div class="avatar">
+                                <img src="~/img/@item.NewsImage" alt="">
+                            </div>
+                            <div class="entry-footer">
+                                <div class="post-author">@item.NewsAuthor</div>
+                                <a href="#" class="post-date">@item.NewsDate</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="post-title text-"><a href="~/Blog/BlogDetail?blog=@item.NewsId">@item.NewsTitle</a></div>
+
+                        </div>
+                        <div class="footer">
+                            <a href="~/Blog/BlogDetail?blog=@item.NewsId">Xem Thêm <span class="mai-chevron-forward text-sm"></span></a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="col-12 mt-5">
+            <nav aria-label="Page Navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+                        <a class="page-link" href="@(Model.HasPreviousPage ? Url.Action("Index", new { page = Model.PageNumber - 1, area = areaValue }) : "#")" tabindex="-1" aria-disabled="@(Model.HasPreviousPage ? "false" : "true")">Previous</a>
+                    </li>
+
+                    @for (var i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, area = areaValue })">
+                                @i @if (i == Model.PageNumber)
+                                {
+                                    <span class="sr-only">(current)</span>
+                                }
+                            </a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+                        <a class="page-link" href="@(Model.HasNextPage ? Url.Action("Index", new { page = Model.PageNumber + 1, area = areaValue }) : "#")">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</main>
+

@@ -133,7 +133,7 @@
                         <ul class="categories">
                             @foreach (var item in ViewBag.CategoryNews)
                             {
-                                <li><a href="#">@item.NewsCategoryTitle</a></li>
+                                <li><a href="~/Blog/Category?category=@item.NewsCategoryId">@item.NewsCategoryTitle</a></li>
                             }
                         </ul>
                     </div>

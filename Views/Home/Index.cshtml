@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Website.Models.News>
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="page-banner home-banner ">
@@ -10,12 +10,11 @@
                 <h1 class="mb-4">Trung Tâm Tin học Thống Kê khu vực II</h1>
                 <p class="text-lg mb-5">Thuộc Cục Thu thập dữ liệu và Ứng dụng công nghệ thông tin, tiền thân là Công ty Dịch vụ Thông tin Thống kê được thành lập từ năm 1988</p>
 
-                <a class="btn btn-outline border text-secondary" asp-area="" asp-controller="About" asp-action="Introduction">Xem Thêm</a>
-                <a href="#" class="btn btn-primary btn-split ml-2">Watch Video <div class="fab"><span class="mai-play"></span></div></a>
+                <a class="btn btn-outline-danger " asp-area="" asp-controller="About" asp-action="Introduction">Xem Thêm</a>
             </div>
             <div class="col-lg-6 py-3 wow zoomIn">
                 <div class="img-place">
-                    <img src="~/assets/img/bg_image_1.png" alt="">
+                    <img src="~/img/final.png" alt="">
                 </div>
             </div>
         </div>
@@ -70,55 +69,176 @@
     </div> <!-- .container -->
 </div> <!-- .page-section -->
 
-<div class="page-section ">
+<div class="page-section features">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 py-3 wow zoomIn">
-                <div class="img-place text-center">
-                    <img src="~/assets/img/bg_image_2.png" alt="">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-8 py-3 wow fadeInUp">
+                <div class="row d-flex flex-row">
+                    @foreach (var item in ViewBag.SingleNews)
+                    {
+                        @if (item != null)
+                        {
+                            <div class="col-lg-12 col-md-12 img-fluid mr-2 ">
+                                <img class="img-fluid" src="~/img/@item.NewsImage" style="width: 100%; height: 400px; object-fit:cover;"/>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mr-2 mt-3">
+                                <a href="~/Blog/BlogDetail?blog=@item.NewsId"><h5>@item.NewsTitle</h5></a>
+                                @{
+                                    string truncatedContent = item.NewsContent.Length > 210 ? item.NewsContent.Substring(0, 210) + "..." : item.NewsContent;
+                                }
+                                <p class="two-line-text">@Html.Raw(truncatedContent)</p>
+                            </div>
+                        }
+
+                    }
+                </div>
+                <div class="row d-flex flex-row">
+                    @foreach (var item in ViewBag.NewNews)
+                    {
+                        <div class="col-lg-3 col-md-6 img-fluid pb-3">
+                            <img style="max-height: 100px; min-height: 100px" class="img-fluid rounded mx-auto d-block" src="~/img/@item.NewsImage" />
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <a href="~/Blog/BlogDetail?blog=@item.NewsId"><h5 class="fs-6">@((item.NewsTitle.Length > 90) ? item.NewsTitle.Substring(0, 90) : item.NewsTitle) ...</h5></a>
+                        </div>
+                    }
+
                 </div>
             </div>
-            <div class="col-lg-6 py-3 wow fadeInRight">
-                <h2 class="title-section">Giới thiệu <span class="marked">Cosis2</span> <br /> Thành Viên thuộc Cosis2</h2>
-                <div class="divider"></div>
-                <p>Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng; tham gia xây dựng và thực hiện các giải pháp kỹ thuật về bảo mật, bảo đảm an toàn, an ninh đối với thông tin cho hệ thống công nghệ thông tin của ngành Thống kê.</p>
-                <a href="~/About/Structure" class="btn btn-primary">Xem Thêm</a>
+
+            <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+                <div class="row d-flex flex-row justify-content-center">
+                    <div style="width: 100%; height: auto;" class="col-lg-12 mb-3">
+                        <img class="img-fluid" src="~/img/pastel-pink-8e3509gb6imnkpg8 (1).jpg" />
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <h5 class="fw-bold"><a href="#">Danh sách Điều tra Thống Kê</a></h5>
+                    </div>
+                    <div style="background-color: #9F0311; height: 100px; width: 94%;" class="col-lg-12 text-center mt-5">
+                        <h5 class="fw-bold mt-4"><a class="justify-content-center" style=" color: white" href="~/Contact">Liên hệ với Chúng tôi</a></h5>
+                    </div>
+                    <div class="col-lg-12 py-3 wow fadeInRight border border-danger mt-3" style="width: 94%; height: 250px; ">
+                        <h2 class="text-center title-section"><span class="marked">Sự Kiện</span> <br /></h2>
+                        <div class="divider mx-auto"></div>
+                        <div class="scrollable-div">
+                            @foreach(var item in ViewBag.ListNews)
+                            {
+                                <a href="~/Blog/BlogDetail?blog=@item.NewsId"><p>@item.NewsTitle</p></a>
+                            }
+                            <a href="#"><p>Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng;</p></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 widget-box mt-3 py-3">
+                        <h4 class="widget-title">Danh Mục</h4>
+                        <div class="divider"></div>
+                        <ul class="categories">
+                            @foreach (var item in ViewBag.CategoryNews)
+                            {
+                                <li><a href="~/Blog/Category?category=@item.NewsCategoryId">@item.NewsCategoryTitle</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+
+
         </div>
     </div> <!-- .container -->
 </div> <!-- .page-section -->
 
-<div class="page-section counter-section">
+<div class="page-section features" style="background-color: #9F0311;">
     <div class="container">
-        <div class="row align-items-center text-center">
-            <div class="col-lg-4">
-                <p>Đã Thành Lập</p>
-                <h2><span class="number" data-number="36"></span> năm</h2>
+        <div class="row justify-content-center">
+            <div class="text-center wow fadeInUp">
+                <h1 style="color: white;" class="title-section">ĐIỀU TRA THỐNG KÊ</h1>
+                <div class="divider mx-auto"></div>
             </div>
-            <div class="col-lg-4">
-                <p>Đạt Doanh Số</p>
-                <h2><span class="number" data-number="200000000"></span> VND</h2>
-            </div>
-            <div class="col-lg-4">
-                <p>Thành Tựu</p>
-                <h2><span class="number" data-number="73"></span></h2>
-            </div>
-        </div>
-    </div> <!-- .container -->
-</div> <!-- .page-section -->
-
-<div  class="page-section features">
-    <div class="container">
-        <div class="row">
-            <div  class="col-lg-6 wow fadeInLeft">
-                <h2 class="title-section">Chúng tôi <span class="marked">cung cấp </span> Các dịch vụ</h2>
-                <div class="divider"></div>
-                <p style="font-size: 16px"  class="mb-5">Xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê.</p>
-                <a asp-area="" asp-controller="Service" asp-action="Index" class="btn btn-outline-danger">Xem thêm</a>
-            </div>
-            <div class="col-lg-6  wow zoomIn">
-                <div class="img-place text-center">
-                    <img src="~/assets/img/bg_image_3.png" alt="">
+            <fieldset style="border: 1px solid white; width: 100%; border-radius: 5px;">
+                <legend style="margin-top: -20px; z-index: 200;" class="text-center wow fadeInUp">
+                    <span style="color: white; background-color: #9F0311" class="title-section" id="">TỔNG ĐIỀU TRA</span>
+                </legend>
+                <div class="row py-5 m-5 ">
+                    <div class="col-lg-4 col-xs-12">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3 rounded-circle" src="~/img/ldvl.jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra <br />Kinh Tế</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-12 ">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3 rounded-circle" src="~/img/ldvl.jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra <br />Kinh Tế</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-xs-12 ">
+                        <div style="background-color: #BF3131; width:90%" class="row p-2">
+                            <img class="img-fluid col-3 rounded-circle" src="~/img/ldvl.jpg" />
+                            <div class="col-9">
+                                <span class="title-section">Tổng điều tra <br />Kinh Tế</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div>
+                <div class="text-center wow fadeInUp mt-4">
+                    <h4 style="color: white; background-color: #9F0311" class="title-section" id="">LĨNH VỰC ĐIỀU TRA</h4>
+                </div>
+                <div class="row m-5 justify-content-center">
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/1.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section text-white">Dân số và <br />Lao động</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/2.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Nông, Lâm nghiệp <br />và Thuỷ sản</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/3.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Tài Khoản <br />Quốc Gia</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/4.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Công Nghiệp và <br />Doanh Nghiệp</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/5.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Đầu Tư và <br />Xây Dựng</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/6.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Thống Kê <br />Giá</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/7.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Thương Mại và <br />Dịch Vụ</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-1 p-3">
+                        <img style="width: auto" class="img-fluid rounded mx-auto d-block" src="~/img/8.png" />
+                        <div style="text-align:center" class="mt-2">
+                            <span class="title-section">Xã Hội và <br />Môi Trường</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,166 +248,36 @@
 <div class="page-section counter-sectionc features">
     <div class="container">
         <div class="text-center wow fadeInUp">
-            <div class="subhead">Tìm hiểu về Chúng tôi</div>
-            <h2 class="title-section"><span class="marked">Chức Năng</span> và Nhiệm Vụ</h2>
+            <div class="subhead">Chúng tôi Cung cấp</div>
+            <h1 class="title-section"><span class="marked">DỊCH VỤ THỐNG KÊ</span></h1>
             <div class="divider mx-auto"></div>
         </div>
 
         <div class="row mt-5 text-center">
-            <div class="col-lg-4 py-3 wow fadeInUp">
-                <div class="display-3"><span class="mai-shapes"></span></div>
-                <h5>Phát triển và Đảm bảo hạ tầng</h5>
-                <p>Phục vụ công tác quản lý và điều hành, nghiên cứu khoa học, tính toán hiệu năng cao, triển khai ứng dụng và Chuyển đổi số.</p>
-            </div>
-            <div class="col-lg-4 py-3 wow fadeInUp">
-                <div class="display-3"><span class="mai-shapes"></span></div>
-                <h5>Xây dựng, quản lý và duy trì HTTT</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, sit.</p>
-            </div>
-            <div class="col-lg-4 py-3 wow fadeInUp">
-                <div class="display-3"><span class="mai-shapes"></span></div>
-                <h5>Hợp tác quốc tế</h5>
-                <p>Triển khai ứng dụng khoa học và công nghệ theo quy định của pháp luật.</p>
-            </div>
+            @foreach (var item in ViewBag.ListProduct)
+            {
+                <div class="col-lg-4 py-3 wow fadeInUp">
+                    <div class="display-3"><a href="~/Service/Details?product=@item.ProductId"><img class="img-fluid rounded mx-auto d-block" style="max-height: 180px;" src="~/img/@item.ProductImage" /></a></div>
+                    <h5 class="mt-3 marked two-line-text"><a href="~/Service/Details?product=@item.ProductId">@item.ProductTitle</a></h5>
+                </div>
+            }
+            
         </div>
     </div> <!-- .container -->
 </div> <!-- .page-section -->
 
-<div class="page-section border-top">
-    <div class="container">
-        <div class="text-center wow fadeInUp">
-            <h2 class="title-section">Sản phẩm Nổi Bật</h2>
-            <div class="divider mx-auto"></div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-auto py-3 wow fadeInLeft">
-                <div class="card-pricing">
-                    <div class="header">
-                        <div class="price-icon"><span class="mai-people"></span></div>
-                        <div class="price-title">Membership</div>
-                    </div>
-                    <div class="body py-3">
-                        <div class="price-tag">
-                            <span class="currency">$</span>
-                            <h2 class="display-4">30</h2>
-                            <span class="period">/monthly</span>
-                        </div>
-                        <div class="price-info">
-                            <p>Choose the plan that right for you</p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-auto py-3 wow fadeInUp">
-                <div class="card-pricing active">
-                    <div class="header">
-                        <div class="price-labled">Best</div>
-                        <div class="price-icon"><span class="mai-business"></span></div>
-                        <div class="price-title">Dedicated</div>
-                    </div>
-                    <div class="body py-3">
-                        <div class="price-tag">
-                            <span class="currency">$</span>
-                            <h2 class="display-4">60</h2>
-                            <span class="period">/monthly</span>
-                        </div>
-                        <div class="price-info">
-                            <p>Choose the plan that right for you</p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-auto py-3 wow fadeInRight">
-                <div class="card-pricing">
-                    <div class="header">
-                        <div class="price-icon"><span class="mai-rocket-outline"></span></div>
-                        <div class="price-title">Private</div>
-                    </div>
-                    <div class="body py-3">
-                        <div class="price-tag">
-                            <span class="currency">$</span>
-                            <h2 class="display-4">90</h2>
-                            <span class="period">/monthly</span>
-                        </div>
-                        <div class="price-info">
-                            <p>Choose the plan that right for you</p>
-                        </div>
-                    </div>
-                    <div class="footer">
-                        <a href="#" class="btn btn-outline rounded-pill">Choose Plan</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> <!-- .container -->
-</div> <!-- .page-section -->
-
-<div class="page-section bg-light">
-    <div class="container">
-
-        <div class="owl-carousel wow fadeInUp" id="testimonials">
-            <div class="item">
-                <div class="row align-items-center">
-                    <div class="col-md-6 py-3">
-                        <div class="testi-image">
-                            <img src="~/assets/img/person/person_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-6 py-3">
-                        <div class="testi-content">
-                            <p>Trung tâm Tin học Thống kê Khu vực II là một đơn vị thuộc Cục Thu thập dữ liệu và Ứng dụng công nghệ thông tin, tiền thân là Công ty Dịch vụ Thông tin Thống kê được thành lập từ năm 1988. Trung tâm được giao chức năng, nhiệm vụ: Thiết lập, quản trị, vận hành, bảo trì hệ thống dự phòng hạ tầng công nghệ thông tin và các dịch vụ mạng; tham gia xây dựng và thực hiện các giải pháp kỹ thuật về bảo mật, bảo đảm an toàn, an ninh đối với thông tin cho hệ thống công nghệ thông tin của ngành Thống kê; thực hiện bảo trì, hỗ trợ và tư vấn kỹ thuật về công nghệ thông tin đối với hệ thống mạng của 20 Cục Thống kê phía Nam.</p>
-                            <div class="entry-footer">
-                                <strong>Lý Hồng Hải</strong> &mdash; <span class="text-grey">Giám Đốc Trung Tâm</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="row align-items-center">
-                    <div class="col-md-6 py-3">
-                        <div class="testi-image">
-                            <img src="~/assets/img/person/person_2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="col-md-6 py-3">
-                        <div class="testi-content">
-                            <p>Trung tâm xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê; xây dựng công cụ xử lý, tích hợp, quản lý, khai thác dữ liệu; xây dựng và quản lý cơ sở dữ liệu, kho dữ liệu thống kê bao gồm dữ liệu vi mô và dữ liệu vĩ mô thống kê. </p>
-                            <div class="entry-footer">
-                                <strong>A Thuận</strong> &mdash; <span class="text-grey">Phó Giám Đốc kiêm Phụ trách chính Phòng Phát Triển CNTT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> <!-- .container -->
-</div> <!-- .page-section -->
-
-<div class="page-section">
+<div class="page-section features">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 py-3 wow fadeInUp">
                 <h2 class="title-section">Liên hệ với Chúng Tôi</h2>
                 <div class="divider"></div>
-                <p>Trung Tâm Tin học Thống Kê<br> Khu vực II!</p>
+                <p style="font-size: 16px">Trung Tâm Tin học Thống Kê<br> Khu vực II!</p>
 
                 <ul class="contact-list">
                     <li>
                         <div class="icon"><span class="mai-map"></span></div>
-                        <div class="content">54A Nơ Trang Long - Phường 14 - Quận Bình Thạnh - TP Hồ Chí Minh</div>
+                        <div class="content">54A Nơ Trang Long-Phường 14-Quận Bình Thạnh-TP Hồ Chí Minh</div>
                     </li>
                     <li>
                         <div class="icon"><span class="mai-mail"></span></div>
@@ -304,60 +294,25 @@
                 <h2 class="title-section">Để lại thông tin Liên Hệ</h2>
                 <div class="divider"></div>
 
-                <form action="#">
+                <form action="~/Contact/SendContact" method="post">
                     <div class="py-2">
-                        <input type="text" class="form-control" placeholder="Full name">
+                        <input type="text" class="form-control" name="UserNameContact" placeholder="Họ và Tên">
                     </div>
                     <div class="py-2">
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" name="UserEmailContact" placeholder="Email">
                     </div>
                     <div class="py-2">
-                        <textarea rows="6" class="form-control" placeholder="Enter message"></textarea>
+                        <textarea rows="6" class="form-control" name="ContentContact" placeholder="Để lại Tin nhắn"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill mt-4">Gửi</button>
                 </form>
+                @if (!string.IsNullOrEmpty(TempData["SendSuccessMessage"] as string))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["SendSuccessMessage"]
+                    </div>
+                }
             </div>
         </div>
     </div> <!-- .container -->
 </div> <!-- .page-section -->
-
-<div class="page-section border-top">
-    <div class="container">
-        <div class="text-center wow fadeInUp">
-            <div class="subhead">Bài đăng về Chúng tôi</div>
-            <h2 class="title-section">Đọc <span class="marked">Các Tin Tức </span>Mới Nhất về Chúng tôi</h2>
-            <div class="divider mx-auto"></div>
-        </div>
-        <div class="row my-5 card-blog-row">      
-            @foreach(var item in Model)
-            {
-                if(item != null)
-                {
-                    <div class="col-md-6 col-lg-3 py-3 wow fadeInUp">
-                        <div style="height: 350px;" class="card-blog">
-                            <div class="header">
-                                <div class="entry-footer">
-                                    <div class="post-author">@item.NewsAuthor</div>
-                                    <a href="#" class="post-date">@item.NewsDate</a>
-                                </div>
-                            </div>
-                            <div class="body">
-                                <div class="post-title"><a href="blog-single.html">@item.NewsTitle</a></div>
-                            </div>
-                            <div class="footer">
-                                <a href="~/Blog/BlogDetail?blog=@item.NewsId">Xem Thêm <span class="mai-chevron-forward text-sm"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                } 
-            }
-        </div>
-
-        <div class="text-center">
-            <a href="~/Blog" class="btn btn-outline-primary rounded-pill">Xem Thêm Các Tin Tức Khác</a>
-        </div>
-    </div> <!-- .container -->
-</div> <!-- .page-section -->
-
-

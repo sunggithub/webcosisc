@@ -35,7 +35,7 @@
                         <input asp-for="UserPassword" type="password" class="form-control" placeholder="Mật khẩu">
                     </div>
                     <div class="form-group">
-                        <p class="text-danger">@TempData["error"] </p>
+                        <p class="text-danger">Bạn chưa có tài khoản? <a href="~/Admin/Auth/Register">Đăng kí</a></p>
                     </div>
                     <input type="submit" name="submit" id="btn-login" class="btn btn-outline-danger btn-custom btn-lg btn-block" value="Đăng Nhập">
                 </form>

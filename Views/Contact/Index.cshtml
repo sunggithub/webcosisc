@@ -66,19 +66,25 @@
                 <p>Điền vào biểu mẫu và một trong những đại diện của chúng tôi sẽ liên lạc với bạn sớm nhất.</p>
                 <div class="divider"></div>
 
-                <form action="#">
+                <form action="~/Contact/SendContact" method="post">  
                     <div class="py-2">
-                        <input type="text" class="form-control" placeholder="Họ Tên">
+                        <input type="text" class="form-control" placeholder="Họ Tên" name="UserNameContact" required>
                     </div>
                     <div class="py-2">
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Email" name="UserEmailContact" required>
                     </div>
                     <div class="py-2">
-                        <textarea rows="6" class="form-control" placeholder="Nhập Tin Nhắn"></textarea>
+                        <textarea rows="6" class="form-control" placeholder="Nhập Tin Nhắn" name="ContentContact" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill mt-4">Gửi</button>
                 </form>
             </div>
+            @if (!string.IsNullOrEmpty(TempData["SendSuccessMessage"] as string))
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["SendSuccessMessage"]
+                </div>
+            }
         </div>
     </div> <!-- .container -->
 </div> <!-- .page-section -->

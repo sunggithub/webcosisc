@@ -1,0 +1,65 @@
+﻿@model Website.Models.User
+
+@{
+    ViewData["Title"] = "CreateUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h1 class="page-header">
+        Welcome to Admin Dashboard
+        <!-- <small>
+        </small> -->
+    </h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="CreateUser" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label">Tên đăng nhập / Email</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserFirstName" class="control-label">Họ</label>
+                    <input asp-for="UserFirstName" class="form-control" />
+                    <span asp-validation-for="UserFirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserLastName" class="control-label">Tên</label>
+                    <input asp-for="UserLastName" class="form-control" />
+                    <span asp-validation-for="UserLastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserPassword" class="control-label">Mật Khẩu</label>
+                    <input asp-for="UserPassword" class="form-control" />
+                    <span asp-validation-for="UserPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserImage" class="control-label">Hình ảnh Mới</label>
+                    <input asp-for="UserImage" class="form-control" type="file" name="fileImage" />
+                    <span asp-validation-for="UserImage" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserRole" class="control-label">Quyền</label>
+                    <select asp-for="UserRole" class="form-control">
+                        <option value="">Chọn Quyền</option>
+                        <option value="user">Người Dùng</option>
+                        <option value="admin">Quản Lý</option>
+                        <!-- Thêm các option khác nếu cần -->
+                    </select>
+                    <span asp-validation-for="UserRole" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+

@@ -22,34 +22,32 @@
 </div>
 
 <main>
-    <div class="page-section features ">
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-6 py-3">
-                <h2 class="title-section">Chúng tôi cung cấp <span class="marked">Giải Pháp và Dịch vụ Sản Phẩm</span> CNTT</h2>
-                <div class="divider"></div>
-                <p class="mb-5">Xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê; xây dựng công cụ xử lý, tích hợp, quản lý, khai thác dữ liệu; xây dựng và quản lý cơ sở dữ liệu, kho dữ liệu thống kê bao gồm dữ liệu vi mô và dữ liệu vĩ mô thống kê.</p>
-                <a href="#" class="btn btn-primary">Xem Thêm</a>
-            </div>
-            <div class="col-lg-6 py-3">
-                <div class="img-place text-center">
-                    <img src="~/img/banner.png" alt="">
-                </div>
-            </div>
-        </div>
-        </div> <!-- .container -->
-    </div> <!-- .page-section -->
-  
     <div class="page-section features">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-6 py-3">
+                    <h2 class="title-section">Chúng tôi cung cấp <span class="marked">Giải Pháp và Dịch vụ Sản Phẩm</span> CNTT</h2>
+                    <div class="divider"></div>
+                    <p class="mb-2">Xây dựng, chuyển giao và hỗ trợ sử dụng các phần mềm ứng dụng trong công tác của ngành Thống kê; xây dựng công cụ xử lý, tích hợp, quản lý, khai thác dữ liệu; xây dựng và quản lý cơ sở dữ liệu, kho dữ liệu thống kê bao gồm dữ liệu vi mô và dữ liệu vĩ mô thống kê.</p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <div class="img-place text-center">
+                        <img src="~/img/banner.png" alt="">
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div> <!-- .container -->
+
+    <div class="container mt-5">
         <div class="text-center">
             <div class="subhead">Luôn Luôn Phát Triển</div>
             <h2 class="title-section">Sản Phẩm Dịch Vụ <span class="marked">Mới Nhất</span></h2>
             <div class="divider mx-auto"></div>
         </div>
-  
+
         <div class="row mt-5 text-center">
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
                 <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
                     <div style="max-height: 300px" class="card-blog">
@@ -69,35 +67,33 @@
                     </div>
                 </div>
             }
-            
+
         </div>
 
         <div class="col-12 mt-5">
             <nav aria-label="Page Navigation">
                 <ul class="pagination justify-content-center">
                     <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
-                            <a class="page-link" href="@(Model.HasPreviousPage ? Url.Action("Index", new { page = Model.PageNumber - 1, area = areaValue }) : "#")" tabindex="-1" aria-disabled="@(Model.HasPreviousPage ? "false" : "true")">Previous</a>
+                        <a class="page-link" href="@(Model.HasPreviousPage ? Url.Action("Index", new { page = Model.PageNumber - 1, area = areaValue }) : "#")" tabindex="-1" aria-disabled="@(Model.HasPreviousPage ? "false" : "true")">Previous</a>
                     </li>
 
                     @for (var i = 1; i <= Model.PageCount; i++)
                     {
                         <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = i, area = areaValue })">
-                                    @i @if (i == Model.PageNumber)
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, area = areaValue })">
+                                @i @if (i == Model.PageNumber)
                                 {
                                     <span class="sr-only">(current)</span>
-                                }</a>
+                                }
+                            </a>
                         </li>
                     }
 
                     <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
-                            <a class="page-link" href="@(Model.HasNextPage ? Url.Action("Index", new { page = Model.PageNumber + 1, area = areaValue }) : "#")">Next</a>
+                        <a class="page-link" href="@(Model.HasNextPage ? Url.Action("Index", new { page = Model.PageNumber + 1, area = areaValue }) : "#")">Next</a>
                     </li>
                 </ul>
             </nav>
         </div>
-
-
-        </div> <!-- .container -->
-    </div> <!-- .page-section -->
+    </div> <!-- .container -->
 </main>

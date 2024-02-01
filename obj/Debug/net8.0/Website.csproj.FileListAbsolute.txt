@@ -280,3 +280,7 @@ C:\Users\User\source\repos\Website\bin\Debug\net8.0\Google.Apis.Core.dll
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\Google.Apis.Gmail.v1.dll
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\System.Management.dll
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\User\source\repos\Website\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\User\source\repos\Website\bin\Debug\net8.0\MailKit.dll
+C:\Users\User\source\repos\Website\bin\Debug\net8.0\MimeKit.dll
+C:\Users\User\source\repos\Website\bin\Debug\net8.0\NETCore.MailKit.dll

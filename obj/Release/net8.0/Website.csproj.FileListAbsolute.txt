@@ -278,9 +278,9 @@ C:\Users\User\source\repos\Website\obj\Release\net8.0\scopedcss\Areas\Admin\View
 C:\Users\User\source\repos\Website\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\User\source\repos\Website\obj\Release\net8.0\scopedcss\bundle\Website.styles.css
 C:\Users\User\source\repos\Website\obj\Release\net8.0\scopedcss\projectbundle\Website.bundle.scp.css
-C:\Users\User\source\repos\Website\obj\Release\net8.0\Website.csproj.CopyComplete
 C:\Users\User\source\repos\Website\obj\Release\net8.0\Website.dll
 C:\Users\User\source\repos\Website\obj\Release\net8.0\refint\Website.dll
 C:\Users\User\source\repos\Website\obj\Release\net8.0\Website.pdb
 C:\Users\User\source\repos\Website\obj\Release\net8.0\Website.genruntimeconfig.cache
 C:\Users\User\source\repos\Website\obj\Release\net8.0\ref\Website.dll
+C:\Users\User\source\repos\Website\obj\Release\net8.0\Website.csproj.Up2Date

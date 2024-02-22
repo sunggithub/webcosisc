@@ -268,7 +268,6 @@ C:\Users\User\source\repos\Website\obj\Debug\net8.0\scopedcss\Areas\Admin\Views\
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\scopedcss\bundle\Website.styles.css
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\scopedcss\projectbundle\Website.bundle.scp.css
-C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.csproj.CopyComplete
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.dll
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\refint\Website.dll
 C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.pdb
@@ -284,3 +283,4 @@ C:\Users\User\source\repos\Website\bin\Debug\net8.0\BouncyCastle.Cryptography.dl
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\MailKit.dll
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\MimeKit.dll
 C:\Users\User\source\repos\Website\bin\Debug\net8.0\NETCore.MailKit.dll
+C:\Users\User\source\repos\Website\obj\Debug\net8.0\Website.csproj.Up2Date

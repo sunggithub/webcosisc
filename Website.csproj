@@ -451,6 +451,7 @@
     <Folder Include="Areas\Manager\Models\" />
     <Folder Include="Areas\Manager\Views\" />
     <Folder Include="Middleware\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
   <ItemGroup>

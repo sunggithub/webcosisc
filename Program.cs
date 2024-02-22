@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(20); // Thời gian chờ phiên (20 phút ở đây)
+    options.IdleTimeout = TimeSpan.FromMicroseconds(24); // Thời gian chờ phiên (24 giờ ở đây)
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
